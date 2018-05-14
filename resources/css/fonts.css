@@ -1,0 +1,39 @@
+@font-face {
+    font-weight: 300;
+    font-style: normal;
+    font-family: "open_sanslight";
+    src: url("../fonts/opensans/opensans-300-webfont.eot");
+    src: url("../fonts/opensans/opensans-300-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans/opensans-300-webfont.woff") format("woff"), url("../fonts/opensans/opensans-300-webfont.ttf") format("truetype"), url("../fonts/opensans/opensans-300-webfont.svg#open_sanslight") format("svg");
+}
+
+@font-face {
+    font-weight: 400;
+    font-style: normal;
+    font-family: "open_sansregular";
+    src: url("../fonts/opensans/opensans-400-webfont.eot");
+    src: url("../fonts/opensans/opensans-400-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans/opensans-400-webfont.woff") format("woff"), url("../fonts/opensans/opensans-400-webfont.ttf") format("truetype"), url("../fonts/opensans/opensans-400-webfont.svg#open_sansregular") format("svg");
+}
+
+@font-face {
+    font-weight: 600;
+    font-style: bold;
+    font-family: "open_sanssemibold";
+    src: url("../fonts/opensans/opensans-600-webfont.eot");
+    src: url("../fonts/opensans/opensans-600-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans/opensans-600-webfont.woff") format("woff"), url("../fonts/opensans/opensans-600-webfont.ttf") format("truetype"), url("../fonts/opensans/opensans-600-webfont.svg#open_sanssemibold") format("svg");
+}
+
+@font-face {
+    font-weight: 700;
+    font-style: bold;
+    font-family: "open_sansbold";
+    src: url("../fonts/opensans/opensans-700-webfont.eot");
+    src: url("../fonts/opensans/opensans-700-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans/opensans-700-webfont.woff") format("woff"), url("../fonts/opensans/opensans-700-webfont.ttf") format("truetype"), url("../fonts/opensans/opensans-700-webfont.svg#open_sansbold") format("svg");
+}
+
+@font-face {
+    font-weight: 900;
+    font-style: bold;
+    font-family: "open_sansextrabold";
+    src: url("../fonts/opensans/opensans-800-webfont.eot");
+    src: url("../fonts/opensans/opensans-800-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans/opensans-800-webfont.woff") format("woff"), url("../fonts/opensans/opensans-800-webfont.ttf") format("truetype"), url("../fonts/opensans/opensans-800-webfont.svg#open_sansextrabold") format("svg");
+}
