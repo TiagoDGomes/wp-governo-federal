@@ -23,7 +23,7 @@
     <script src="<?= get_template_directory_uri()  ?>/padraogoverno/resources/js/cookies.js"></script>
 
     <!--[if lte IE 8]>
-    <link rel="stylesheet" type="text/css" href="resources/css/basic-ie.css" />
+    <link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/css/basic-ie.css" />
     <![endif]-->
 
 
@@ -36,8 +36,8 @@
 
 <?php $theme_color = get_option('theme_color'); ?>
 
-<body onload="onLoad();" class="<?= $theme_color ?> ">
-    <script src="resources/js/acessibilidade.js"></script>
+<body class="<?= $theme_color ?> ">
+    <script src="<?= get_template_directory_uri()  ?>/padraogoverno/resources/js/acessibilidade.js"></script>
     <div id="barra-brasil"></div>
     <div id="tudo">
         <header>
@@ -188,7 +188,7 @@
                 </div>
             </div>
             <div id="barra-servicos">
-                <?php idg_build_menu('idg-sobre'); ?>
+                <?php idg_build_menu('idg-servicos'); ?>
             </div>
 
             <div id="barra-breadcrumb">
@@ -221,7 +221,7 @@
                 <?php for ($i = 1; $i <= IDG_MAX_MENU_LATERAL_ESQUERDO; $i++) : ?>
                 <?php $menu = idg_get_menu("idg-menu-lateral-esquerdo-$i"); ?>
                 <?php if($menu !== FALSE) :?>
-                <dl class="nav-menu-bloco <?= $menu->slug ?> <?= $menu->taxonomy ?>">
+                <dl class="menu-bloco <?= $menu->slug ?> <?= $menu->taxonomy ?>">
                     <dt>
                         <?= $menu->name; ?>
                     </dt>
