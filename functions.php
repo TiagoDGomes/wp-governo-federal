@@ -155,8 +155,10 @@ if (!function_exists('add_theme_menu_item')) {
 if (!function_exists('idg_get_menu')) {
     function idg_get_menu($menu_name){
         $locations = get_nav_menu_locations();
-        $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-        return $menu;
+        if(isset($locations[ $menu_name ])){
+            return wp_get_nav_menu_object( $locations[ $menu_name ] );
+        }        
+        return null;
     }
 }
 

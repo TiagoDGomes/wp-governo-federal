@@ -220,7 +220,7 @@
 
                 <?php for ($i = 1; $i <= IDG_MAX_MENU_LATERAL_ESQUERDO; $i++) : ?>
                 <?php $menu = idg_get_menu("idg-menu-lateral-esquerdo-$i"); ?>
-                <?php if($menu !== FALSE) :?>
+                <?php if (is_array($menu) || is_object($menu)) :?>
                 <dl class="menu-bloco <?= $menu->slug ?> <?= $menu->taxonomy ?>">
                     <dt>
                         <?= $menu->name; ?>
