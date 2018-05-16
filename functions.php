@@ -10,7 +10,7 @@ if (!function_exists('idg_setup')) {
     function idg_setup() {
         register_nav_menu( 'idg-menu-de-relevancia', __( 'IDG - Menu de relevância', 'idg' ) );
         //register_nav_menu( 'idg-redes-sociais', __( 'IDG - Menu "Redes Sociais"', 'idg' ) );
-        register_nav_menu( 'idg-sobre', __( 'IDG - Menu "Sobre"', 'idg' ) );
+        register_nav_menu( 'idg-servicos', __( 'IDG - Menu "Serviços"', 'idg' ) );
         register_nav_menu( 'idg-em-destaque', __( 'IDG - Menu "Em destaque"', 'idg' ) );
         register_nav_menu( 'idg-central-de-conteudos', __( 'IDG - Menu "Central de Conteúdos"', 'idg' ) );        
         for ($i = 1; $i <= IDG_MAX_MENU_LATERAL_ESQUERDO; $i++){
@@ -197,8 +197,8 @@ if (!function_exists('idg_build_menu')) {
                     //$class_ = strtolower($menuitem->title);
                 }
                 ?>                
-                <li<?= $id ?> class="item-<?= $class_ ?>"  >
-                    <a class="internal-link link-<?= $class_ ?>"   href="<?= $menuitem->url ?>" ><?= $menuitem->title ?></a>
+                <li<?= $id ?> class="<?= $class_ ?>"  >
+                    <a class="internal-link" href="<?= $menuitem->url ?>" ><?= $menuitem->title ?></a>
                 </li>                
                 <?php
             }
