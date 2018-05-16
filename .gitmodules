@@ -1,0 +1,3 @@
+[submodule "padraogoverno"]
+	path = padraogoverno
+	url = https://github.com/TiagoDGomes/template-governo-federal.git

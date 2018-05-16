@@ -2,277 +2,251 @@
 <html lang="pt-br" dir="ltr" class="">
 
 <head>
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/resources/css/bootstrap.min.css">
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	<title><?php wp_title(''); ?></title>
-	<link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/resources/css/fonts.css">
-	<link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/resources/css/default.css">
-	<link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/resources/css/extra-small.css">
-	<link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/resources/css/small.css">
-	<link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/resources/css/medium.css">
-	<link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/resources/css/large.css">
-	<link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/resources/css/extra-large.css">
-    <?php $theme_color = get_option('theme_color'); ?>
-    <?php if ($theme_color !== FALSE || $theme_color != 'branco'): ?>    
-    <link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/resources/css/tema-<?= $theme_color ?>.css">	
-    <?php endif; ?>
-    <link rel="shortcut icon" href="<?= get_template_directory_uri()  ?>/resources/img/favicon.ico" type="image/x-icon">
-	<script src="<?= get_template_directory_uri()  ?>/resources/js/cookies.js"></script>
-	<script src="<?= get_template_directory_uri()  ?>/resources/js/acessibilidade.js"></script>
-    <script src="<?= get_template_directory_uri()  ?>/resources/js/geral.js"></script>    
-    <link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/resources/css/acessibilidade.css">
-    
-	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-	<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); wp_head(); ?>	
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+        <?php wp_title(''); ?>
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link media="screen" rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/css/geral.css">
+    <link media="screen" rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/css/tema.css">
+    <link media="(min-width: 1024px)" rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/css/tela-grande.css">
+    <link media="(min-width: 769px) and (max-width: 1023px)" rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/css/tela-media.css">
+    <link media="(max-width: 768px)" rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/css/tela-pequena.css">
+    <link media="screen" rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/css/devel.css">
+    <link media="print" rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/css/impressao.css">
+    <link media="screen" rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/css/acessibilidade.css">
+    <link rel="shortcut icon" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/img/favicon.ico" type="image/x-icon">
+    <script src="<?= get_template_directory_uri()  ?>/padraogoverno/resources/js/cookies.js"></script>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" type="text/css" href="resources/css/basic-ie.css" />
+    <![endif]-->
+
+
+
+    <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+    <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); wp_head(); ?>
+
 </head>
 
-<body onload="onLoad();" class="">
-    <noscript>
-        <div class="error minor-font">
-            Seu navegador de internet está sem suporte à JavaScript. Por esse motivo algumas funcionalidades do site podem não estar
-            acessíveis.
-        </div>
-    </noscript>
-    <div id="barra-identidade">
-        <div id="barra-brasil" style="background:#7F7F7F; height: 20px; padding:0 0 0 10px;display:block;">
-            <ul id="menu-barra-temp" style="list-style:none;">
-                <li style="display:inline; float:left;padding-right:10px; margin-right:10px; border-right:1px solid #EDEDED">
-                    <a href="http://brasil.gov.br" style="font-family:sans,sans-serif; text-decoration:none; color:white;">Portal do Governo Brasileiro</a>
-                </li>
-                <li>
-                    <a style="font-family:sans,sans-serif; text-decoration:none; color:white;" href="http://epwg.governoeletronico.gov.br/barra/atualize.html">Atualize sua Barra de Governo</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div id="wrapper">
-        <header role="banner">
-            <div class="block">
-                <ul id="accessibility">
-                    <li>
-                        <a accesskey="1" href="#acontent" id="link-conteudo" data-unsp-sanitized="clean">
-                            Ir para o conteúdo
-                            <span>1</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a accesskey="2" href="#anavigation" id="link-navegacao" data-unsp-sanitized="clean">
-                            Ir para o menu
-                            <span>2</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a accesskey="3" href="#SearchableText" id="link-buscar" data-unsp-sanitized="clean">
-                            Ir para a busca
-                            <span>3</span>
-                        </a>
-                    </li>
-                    <li class="last-item">
-                        <a accesskey="4" href="#afooter" id="link-rodape" data-unsp-sanitized="clean">
-                            Ir para o rodapé
-                            <span>4</span>
-                        </a>
-                    </li>
-                </ul>
+<?php $theme_color = get_option('theme_color'); ?>
 
-                <!--
-                    <ul id="portal-language">
-                    <li class="language-es">
-                        <a href="#">Espa&#241;ol</a>
-                    </li>
-                    <li class="language-en last-item">
-                        <a href="#" target="_blank" data-unsp-sanitized="clean">English</a>
-                    </li>
-                </ul>
-                -->
-                <ul id="portal-siteactions">
-                    <li id="siteaction-accessibility">
-                        <a href="acessibilidade" title="Acessibilidade" accesskey="5" data-unsp-sanitized="clean">Acessibilidade</a>
-                    </li>
-                    <li id="siteaction-contraste">
-                        <a href="#" onclick="window.acessibilidade.alternar()" title="Alto Contraste" accesskey="6" data-unsp-sanitized="clean" class="necessario-javascript">Alto Contraste</a>
-                    </li>
-                    <li id="siteaction-mapadosite" class="last-item">
-                        <a href="mapadosite" title="Mapa do Site" accesskey="7" data-unsp-sanitized="clean">Mapa do Site</a>
-                    </li>
-                </ul>
+<body onload="onLoad();" class="<?= $theme_color ?> ">
+    <script src="resources/js/acessibilidade.js"></script>
+    <div id="barra-brasil"></div>
+    <div id="tudo">
+        <header>
+            <div id="cabecalho">
+                <div>
+                    <div id="barra-atalhos">
+                        <div class="legenda screen-reader-text">Menu de atalhos</div>
+                        <ul>
+                            <li>
+                                <a accesskey="1" href="#secao-conteudo" id="link-conteudo">
+                                    Ir para o conteúdo
+                                    <span>1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a accesskey="2" href="#secao-menu" id="link-navegacao">
+                                    Ir para o menu
+                                    <span>2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a accesskey="3" href="#busca-portal" id="link-buscar">
+                                    Ir para a busca
+                                    <span>3</span>
+                                </a>
+                            </li>
+                            <li class="last-item">
+                                <a accesskey="4" href="#secao-rodape" id="link-rodape">
+                                    Ir para o rodapé
+                                    <span>4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="barra-idiomas">
+                        <div class="legenda screen-reader-text">Menu de idiomas</div>
+                        <ul>
+                            <li>
+                                <a href="#">English</a>
+                            </li>
+                            <li>
+                                <a href="#">Español</a>
+                            </li>
+                        </ul>
+                    </div>
 
-                <div id="logo">
-                    <a id="portal-logo" title="" href="<?= home_url() ?>" data-unsp-sanitized="clean">
-                        <span id="portal-title-1"><?= get_option('idg_denominacao'); ?>&nbsp;</span>
-                        <h1 id="portal-title" class="corto" data-unsp-sanitized="clean"><?php bloginfo('name'); ?></h1>
-                        <span id="portal-description"><?php bloginfo('description'); ?></span>
-                    </a>
-                </div>
+                    <div id="barra-acessibilidade">
+                        <div class="legenda screen-reader-text">Menu de acessibilidade</div>
+                        <ul>
+                            <li>
+                                <a href="#">Acessibilidade</a>
+                            </li>
+                            <li class="js-necessario">
+                                <a onclick="window.acessibilidade.altoContraste.alternar();" href="#">Alto contraste</a>
+                            </li>
+                            <li>
+                                <a href="#">Mapa do site</a>
+                            </li>
+                        </ul>
+                    </div>
 
-                <div id="portal-searchbox">
+
+                    <div id="titulo">
+                        <a href="<?= home_url() ?>">
+                            <div class="denominacao">
+                                <?= get_option('idg_denominacao'); ?>
+                            </div>
+                            <h1>
+                                <?php bloginfo('name'); ?>
+                            </h1>
+                            <div class="subordinacao">
+                                <?php bloginfo('description'); ?>
+                            </div>
+                        </a>
+                    </div>
+
                     <form action="<?= home_url('/') ?>">
-                        <fieldset>
-                            <legend>Buscar no portal</legend>
+                        <fieldset id="barra-busca">
+                            <legend>Ferramenta de busca</legend>
                             <label for="busca-portal">Buscar no portal</label>
-                            <input name="s" type="text" size="18" title="Buscar no portal" placeholder="Buscar no portal" class="searchField"
-                                id="busca-portal">
-                            <input class="searchButton" type="submit" value="Buscar no portal">
+                            <input name="s" type="text" size="18" title="Buscar no portal" placeholder="Buscar no portal" id="busca-portal">
+                            <input type="submit" value="Buscar no portal">
                         </fieldset>
                     </form>
 
-                </div>
-                <div id="social-icons">    
-                    <ul>
-                        <?php if(get_option('youtube_url')):?>
-                        <li id="portalredes-youtube">
-                            <a href="<?= get_option('youtube_url') ?>" data-unsp-sanitized="clean">YouTube</a>
-                        </li>
-                        <?php endif; ?>
+                    <div id="barra-redes-sociais">
+                        <div class="legenda screen-reader-text">Menu de redes sociais</div>
+                        <ul>
+                            <?php if(get_option('youtube_url')):?>
+                            <li class="youtube">
+                                <a href="<?= get_option('youtube_url') ?>">YouTube</a>
+                            </li>
+                            <?php endif; ?>
 
-                        <?php if(get_option('facebook_url')):?>                        
-                        <li id="portalredes-facebook">
-                            <a href="<?= get_option('facebook_url') ?>" data-unsp-sanitized="clean">Google+</a>
-                        </li>
-                        <?php endif; ?>
+                            <?php if(get_option('facebook_url')):?>
+                            <li class="facebook">
+                                <a href="<?= get_option('facebook_url') ?>">Facebook</a>
+                            </li>
+                            <?php endif; ?>
 
-                        <?php if(get_option('gplus_url')):?>                        
-                        <li id="portalredes-googleplus">
-                            <a href="<?= get_option('gplus_url') ?>" data-unsp-sanitized="clean">Google+</a>
-                        </li>
-                        <?php endif; ?>
+                            <?php if(get_option('gplus_url')):?>
+                            <li class="googleplus">
+                                <a href="<?= get_option('gplus_url') ?>">Google+</a>
+                            </li>
+                            <?php endif; ?>
 
-                        <?php if(get_option('instagram_url')):?>   
-                        <li id="portalredes-instagram">
-                            <a href="<?= get_option('instagram_url') ?>" data-unsp-sanitized="clean">Instagram</a>
-                        </li>
-                        <?php endif; ?>
+                            <?php if(get_option('instagram_url')):?>
+                            <li class="instagram">
+                                <a href="<?= get_option('instagram_url') ?>">Instagram</a>
+                            </li>
+                            <?php endif; ?>
 
-                        <?php if(get_option('tumblr_url')):?>
-                        <li id="portalredes-tumblr">
-                            <a href="<?= get_option('tumblr_url') ?>" data-unsp-sanitized="clean">Thumblr</a>
-                        </li>
-                        <?php endif; ?>
+                            <?php if(get_option('tumblr_url')):?>
+                            <li class="tumblr">
+                                <a href="<?= get_option('tumblr_url') ?>">Thumblr</a>
+                            </li>
+                            <?php endif; ?>
 
-                        <?php if(get_option('twitter_url')):?>
-                        <li id="portalredes-twitter">
-                            <a href="<?= get_option('twitter_url') ?>" data-unsp-sanitized="clean">Twitter</a>
-                        </li>
-                        <?php endif; ?>
+                            <?php if(get_option('twitter_url')):?>
+                            <li class="twitter">
+                                <a href="<?= get_option('twitter_url') ?>">Twitter</a>
+                            </li>
+                            <?php endif; ?>
 
-                        <?php if(get_option('flickr_url')):?>
-                        <li id="portalredes-flickr">
-                            <a href="<?= get_option('flickr_url') ?>" data-unsp-sanitized="clean">Flickr</a>
-                        </li>
-                        <?php endif; ?>
+                            <?php if(get_option('flickr_url')):?>
+                            <li class="flickr">
+                                <a href="<?= get_option('flickr_url') ?>">Flickr</a>
+                            </li>
+                            <?php endif; ?>
 
-                        <?php if(get_option('soundcloud_url')):?>
-                        <li id="portalredes-soundcloud">
-                            <a href="<?= get_option('soundcloud_url') ?>" data-unsp-sanitized="clean">SoundCloud</a>
-                        </li>
-                        <?php endif; ?>
+                            <?php if(get_option('soundcloud_url')):?>
+                            <li class="soundcloud">
+                                <a href="<?= get_option('soundcloud_url') ?>">SoundCloud</a>
+                            </li>
+                            <?php endif; ?>
 
-                        <?php if(get_option('slideshare_url')):?>
-                        <li id="portalredes-slideshare">
-                            <a href="<?= get_option('slideshare_url') ?>" data-unsp-sanitized="clean">Slideshare</a>
-                        </li>
-                        <?php endif; ?>
+                            <?php if(get_option('slideshare_url')):?>
+                            <li class="slideshare">
+                                <a href="<?= get_option('slideshare_url') ?>">Slideshare</a>
+                            </li>
+                            <?php endif; ?>
 
-                        <li id="portalredes-rss">
-                            <a href="<?php bloginfo('rss2_url'); ?>" data-unsp-sanitized="clean">RSS</a>
-                        </li>
-                    </ul>                                    
-                    <?php // idg_build_menu('idg-redes-sociais'); ?>                    
+                            <li class="rss">
+                                <a href="<?php bloginfo('rss2_url'); ?>">RSS</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            
-            <div id="sobre">
-                <?php idg_build_menu('idg-sobre'); ?> 
+            <div id="barra-servicos">
+                <?php idg_build_menu('idg-sobre'); ?>
+            </div>
+
+            <div id="barra-breadcrumb">
+                <span class="legenda screen-reader-text">Localização da página</span>
+                <span id="breadcrumbs-you-are-here">Você está aqui:</span>
+                <span id="breadcrumbs-home">
+                    <a href="<?= home_url() ?>">Página Inicial</a>
+                </span>
             </div>
         </header>
+        <div id="menu-em-destaque" style="display: none">
+            <?php idg_build_menu('idg-em-destaque'); ?>
+        </div>
 
+        <div id="central">
+            <nav id="menu-lateral">
+                <a name="secao-menu" id="secao-menu" class="screen-reader-text">Menu principal</a>
+                <?php $menu_relevancia = idg_get_menu("idg-menu-de-relevancia"); ?>
+                <?php if($menu_relevancia !== FALSE) :?>
+                <dl class="menu-relevancia">
+                    <dt class="screen-reader-text">
+                        Menu de relevância
+                    </dt>
+                    <dd>
+                        <?php idg_build_menu('idg-menu-de-relevancia'); ?>
+                    </dd>
+                </dl>
+                <?php endif; ?>
 
-        <div id="main">
-            <section id="portal-features">
-                <div id="featured-content"></div>
-            </section>
-            <section id="em-destaque">
-                <h2>
-                    Em destaque
-                </h2>
+                <?php for ($i = 1; $i <= IDG_MAX_MENU_LATERAL_ESQUERDO; $i++) : ?>
+                <?php $menu = idg_get_menu("idg-menu-lateral-esquerdo-$i"); ?>
+                <?php if($menu !== FALSE) :?>
+                <dl class="nav-menu-bloco <?= $menu->slug ?> <?= $menu->taxonomy ?>">
+                    <dt>
+                        <?= $menu->name; ?>
+                    </dt>
+                    <dd>
+                        <?php idg_build_menu("idg-menu-lateral-esquerdo-$i"); ?>
+                    </dd>
+                </dl>
+                <?php endif; ?>
+                <?php endfor; ?>
 
-                <?php idg_build_menu('idg-em-destaque'); ?>       
+                <?php if ( is_active_sidebar( 'menu-lateral-esquerdo' ) ) : ?>
+                <?php dynamic_sidebar( 'menu-lateral-esquerdo' ); ?>
+                <?php endif; ?>
 
-            </section>
-
-            <section id="portal-columns">
-                <div id="viewlet-above-content">
-                    <div id="portal-breadcrumbs">
-                        <span id="breadcrumbs-you-are-here">Você está aqui:</span>
-                        <span id="breadcrumbs-home">
-                            <a href="<?= home_url() ?>" data-unsp-sanitized="clean">Página Inicial</a>
-                        </span>
-                    </div>
-                </div>
-            </section>
-            
-            <div id="navigation" class="row">
-                
-                <div id="nav-menu-lateral-esquerda" class="col col-12 col-sm-3 col-md-2">
-                    <a name="anavigation" id="anavigation" data-unsp-sanitized="clean"></a>
-                    <span class="menuTrigger">Menu</span>
-                    <div class="cell width-1:4 position-0">
-
-                        <div class="first-item nav-menu-de-relevancia">
-                        <?php $menu_relevancia = idg_get_menu("idg-menu-de-relevancia"); ?>                        
-                        <?php if($menu_relevancia !== FALSE) :?>
-                            <dl class="first-item-nav">
-                                <dt>
-                                    Menu de relevância
-                                </dt>
-                                <dd>
-                                    <?php idg_build_menu('idg-menu-de-relevancia'); ?> 
-                                </dd>
-                            </dl>
-                            <?php endif; ?> 
-                        </div>
-                    
-
-                        <?php for ($i = 1; $i <= IDG_MAX_MENU_LATERAL_ESQUERDO; $i++) : ?>
-                            <?php $menu = idg_get_menu("idg-menu-lateral-esquerdo-$i"); ?>
-                            
-                            <?php if($menu !== FALSE) :?>
-                            
-                                <div class="nav-menu-bloco <?= $menu->slug ?> <?= $menu->taxonomy ?>" >
-                                    <dl>
-                                        <dt>
-                                            <?= $menu->name; ?>
-                                        </dt>
-                                        <dd>
-                                            <?php idg_build_menu("idg-menu-lateral-esquerdo-$i"); ?> 
-                                        </dd>
-                                    </dl>
-                                </div>
-                                
-                            <?php endif; ?>    
-                        <?php endfor; ?>    
-                        
-                        <?php if ( is_active_sidebar( 'menu-lateral-esquerdo' ) ) : ?>
-                            <?php dynamic_sidebar( 'menu-lateral-esquerdo' ); ?>                            
-                        <?php endif; ?>   
-                        
-                        <?php if(idg_get_menu("idg-central-de-conteudos") !== FALSE) :?>
-                            <div class="nav-menu-bloco icon">
-                                <dl class="centrais-de-conteudos">
-                                    <dt>
-                                        Centrais de Conteúdos
-                                    </dt>
-                                    <dd>
-                                        <?php idg_build_menu("idg-central-de-conteudos"); ?>                                         
-                                    </dd>
-                                </dl>
-                            </div>
-                    <?php endif; ?>
-                    </div>
-                </div>
-
-                <div id="content" class="col col-sm-9 col-md-10">
-                    <a name="acontent" id="acontent" data-unsp-sanitized="clean"></a>
-                    <main>
+                <?php if(idg_get_menu("idg-central-de-conteudos") !== FALSE) :?>
+                <dl class="menu-bloco">
+                    <dt class="centrais-de-conteudos">
+                        Centrais de Conteúdos
+                    </dt>
+                    <dd class="centrais-de-conteudos">
+                        <?php idg_build_menu("idg-central-de-conteudos"); ?>
+                    </dd>
+                </dl>
+                <?php endif; ?>
+            </nav>
+            <div id="area-conteudo">
+                <main class="grid">
+                    <a name="secao-conteudo" id="secao-conteudo" class="screen-reader-text">Início</a>
