@@ -36,7 +36,7 @@
 
 <?php $theme_color = get_option('theme_color'); ?>
 
-<body class="<?= $theme_color ?> ">
+<body <?php body_class( 'class-name' ); ?>>
     <script src="<?= get_template_directory_uri()  ?>/padraogoverno/resources/js/acessibilidade.js"></script>
     <div id="barra-brasil"></div>
     <div id="tudo">
