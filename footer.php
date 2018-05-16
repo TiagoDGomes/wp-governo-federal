@@ -37,11 +37,11 @@
             </div>
         </footer>
     
-        <script defer="defer" src="https://barra.brasil.gov.br/barra.js" type="text/javascript"></script>
+        <script defer="defer" src="https://barra.brasil.gov.br/barra.js"></script>
         <script>
-            var elements = document.querySelectorAll('.necessario-javascript');
-            Array.prototype.forEach.call(elements, function (el, i) {
-                el.classList.remove('necessario-javascript');
+            var elementosDesabilitadosJavascript = document.querySelectorAll('.js-necessario');
+            Array.prototype.forEach.call(elementosDesabilitadosJavascript, function (el, i) {
+                el.classList.remove('js-necessario');
             });
         </script>
         <?php wp_footer(); ?>
