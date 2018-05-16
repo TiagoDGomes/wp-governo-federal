@@ -7,9 +7,9 @@
         </div>
 
         <div class="clear"></div>
-        <div id="voltar-topo">
+        <!--<div id="voltar-topo">
             <a href="#wrapper">Voltar para o topo</a>
-        </div>
+        </div>-->
         <footer>
             <a name="secao-rodape" id="secao-rodape" class="screen-reader-text">Menu de rodapé</a>
             <div id="footer-menu" class="grid">
@@ -45,6 +45,7 @@
             });
         </script>
         <?php wp_footer(); ?>
+    </div>
 </body>
 
 </html>
