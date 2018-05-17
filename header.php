@@ -91,7 +91,7 @@
                                 <a href="#">Acessibilidade</a>
                             </li>
                             <li class="js-necessario">
-                                <a onclick="window.acessibilidade.altoContraste.alternar();" href="#">Alto contraste</a>
+                                <a onclick="window.acessibilidade.altoContraste.alternar();return false;" href="#">Alto contraste</a>
                             </li>
                             <li>
                                 <a href="#">Mapa do site</a>
