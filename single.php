@@ -19,7 +19,8 @@
 			</div>
 			<div class="informacoes">
 				<div class="screen-reader-text">Informações sobre o artigo:</div>
-				<dl>
+				
+				<dl class="info">
 					<dt class="autor">por</dt>
 					<dd class="autor"><?php the_author()?></dd>
 					<dt class="data">Publicado:</dt>
@@ -44,7 +45,9 @@
 							Tweet 
 						</a>
 					</li>
-					<li class="facebook">Facebook</li>
+					<li class="facebook">
+						<iframe src="https://www.facebook.com/plugins/like.php?href=<?= urlencode (get_permalink());?>&amp;width=120&amp;layout=button&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=25&amp;appId=<?= get_option('facebook_app_id');?>" width="120" height="25" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+					</li>
 					<li class="googleplus">G+</li>
 				</ul>
 				
