@@ -25,7 +25,7 @@ if (!function_exists('idg_setup')) {
             'name' => 'Menu lateral esquerdo personalizado',
             'id' => 'menu-lateral-esquerdo',
             'description' => __( 'Permite personalizar o menu lateral à esquerda do site', 'idg' ),
-		    'before_widget' => '<div class="nav-menu-bloco"><dl id="%1$s" class="widget %2$s">',
+		    'before_widget' => '<div class="menu-bloco"><dl id="%1$s" class="widget %2$s">',
             'after_widget' => '</dd></dl></div>',
             'before_title' => '<dt>',
             'after_title' => '</dt><dd>',
