@@ -57,6 +57,18 @@
 				<?php the_content();?>
 
 			</div>
+			<div class="main-rodape">
+			    <?php if (get_the_tags()): ?>
+				<div class="tags">
+					<div class="legenda">Tópicos:</div>
+					<?php the_tags();?>
+				</div>
+				<?php endif; ?>
+				<div class="categorias">
+					<div class="legenda">Assuntos:</div>
+					<?php the_category();?>
+				</div>
+			</div>
 		<?php endwhile;else: ?>
 
 
