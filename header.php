@@ -36,7 +36,7 @@
 
 <?php $theme_color = get_option('theme_color'); ?>
 
-<body class="<?= $theme_color ?> ">
+<body <?php body_class( 'class-name' ); ?>>
     <script src="<?= get_template_directory_uri()  ?>/padraogoverno/resources/js/acessibilidade.js"></script>
     <div id="barra-brasil"></div>
     <div id="tudo">
@@ -91,7 +91,7 @@
                                 <a href="#">Acessibilidade</a>
                             </li>
                             <li class="js-necessario">
-                                <a onclick="window.acessibilidade.altoContraste.alternar();" href="#">Alto contraste</a>
+                                <a onclick="window.acessibilidade.altoContraste.alternar();return false;" href="#">Alto contraste</a>
                             </li>
                             <li>
                                 <a href="#">Mapa do site</a>
@@ -220,7 +220,7 @@
 
                 <?php for ($i = 1; $i <= IDG_MAX_MENU_LATERAL_ESQUERDO; $i++) : ?>
                 <?php $menu = idg_get_menu("idg-menu-lateral-esquerdo-$i"); ?>
-                <?php if($menu !== FALSE) :?>
+                <?php if (is_array($menu) || is_object($menu)) :?>
                 <dl class="menu-bloco <?= $menu->slug ?> <?= $menu->taxonomy ?>">
                     <dt>
                         <?= $menu->name; ?>

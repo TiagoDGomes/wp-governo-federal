@@ -82,6 +82,9 @@ function display_titulo(){ ?>
 function display_subordinacao(){?>
     <input class="regular-text" type="text" name="blogdescription" id="blogdescription" value="<?php echo get_option('blogdescription'); ?>" />    
 <?php }
+function display_default_hat(){?>
+    <input class="regular-text" type="text" name="default_hat" id="default_hat" value="<?php echo get_option('default_hat'); ?>" />    
+<?php }
 
 
 function opcoes_de_tema(){?>
@@ -95,16 +98,20 @@ function opcoes_de_tema(){?>
 
 function display_theme_panel_fields(){
 	add_settings_section("section", "Opções de tema", null, "theme-options");
-	add_settings_field("theme_color", "Cor", "opcoes_de_tema", "theme-options", "section");
-    add_settings_field("idg_denominacao", "Denominação", "display_denominacao", "theme-options", "section");
-    add_settings_field("idg_titulo", "Título", "display_titulo", "theme-options", "section");
-    add_settings_field("idg_subordinacao", "Subordinação", "display_subordinacao", "theme-options", "section");
-    register_setting("section", "idg_denominacao");
-    register_setting("section", "blogname");
-    register_setting("section", "blogdescription");
+    add_settings_field("theme_color", "Cor", "opcoes_de_tema", "theme-options", "section");
     register_setting("section", "theme_color");
 
-	add_settings_section("section", "Redes Sociais", null, "redes-sociais");
+    add_settings_section("section", "Opções gerais", null, "opcoes-gerais");
+	add_settings_field("idg_denominacao", "Denominação", "display_denominacao", "opcoes-gerais", "section");
+    add_settings_field("idg_titulo", "Título", "display_titulo", "opcoes-gerais", "section");
+    add_settings_field("idg_subordinacao", "Subordinação", "display_subordinacao", "opcoes-gerais", "section");
+    add_settings_field("default_hat", "Chapéu padrão", "display_default_hat", "opcoes-gerais", "section");    
+    register_setting("section", "idg_denominacao");
+    register_setting("section", "blogname");
+    register_setting("section", "blogdescription");    
+    register_setting("section", "default_hat");
+    
+    add_settings_section("section", "Redes Sociais", null, "redes-sociais");
 	add_settings_field("twitter_url", "URL da página do Twitter", "display_twitter_element", "redes-sociais", "section");
     add_settings_field("facebook_url", "URL da página do Facebook", "display_facebook_element", "redes-sociais", "section");    
     add_settings_field("youtube_url", "URL da página do Youtube", "display_youtube_element", "redes-sociais", "section");    
@@ -114,7 +121,6 @@ function display_theme_panel_fields(){
     add_settings_field("flickr_url", "URL da página do Flickr", "display_flickr_element", "redes-sociais", "section");    
     add_settings_field("soundcloud_url", "URL da página do Soundcloud", "display_soundcloud_element", "redes-sociais", "section");    
     add_settings_field("slideshare_url", "URL da página do Slideshare", "display_slideshare_element", "redes-sociais", "section");    
-
     register_setting("section", "twitter_url");
     register_setting("section", "facebook_url");
     register_setting("section", "youtube_url");
@@ -124,6 +130,8 @@ function display_theme_panel_fields(){
     register_setting("section", "flickr_url");
     register_setting("section", "soundcloud_url");
     register_setting("section", "slideshare_url");
+
+    
     
 }
 
@@ -136,6 +144,7 @@ if (!function_exists('theme_settings_page')) {
 	        <?php
 	            settings_fields("section");
 	            do_settings_sections("theme-options");      
+	            do_settings_sections("opcoes-gerais");      
 	            do_settings_sections("redes-sociais");      
 	            submit_button(); 
 	        ?>          
@@ -149,15 +158,29 @@ if (!function_exists('add_theme_menu_item')) {
         add_menu_page("IDG Configurações", "IDG Configurações", "manage_options", "theme-panel", "theme_settings_page", null, 99);
     }
 }
-
+add_filter( 'body_class', 'idg_body_class' );
+function idg_body_class( $classes ) {
+    
+    $classes[] = get_option('theme_color');
+    
+    return $classes;
+}
 
 
 if (!function_exists('idg_get_menu')) {
     function idg_get_menu($menu_name){
         $locations = get_nav_menu_locations();
-        $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-        return $menu;
+        if(isset($locations[ $menu_name ])){
+            return wp_get_nav_menu_object( $locations[ $menu_name ] );
+        }        
+        return null;
     }
+}
+
+add_action('wp_insert_post', 'idg_add_custom_fields');
+function idg_add_custom_fields($post_id){
+    add_post_meta($post_id, 'Chapéu', get_option('default_hat'), true);    
+    return true;
 }
 
 if (!function_exists('idg_build_menu')) {

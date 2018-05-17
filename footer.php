@@ -7,16 +7,16 @@
         </div>
 
         <div class="clear"></div>
-        <div id="voltar-topo">
+        <!--<div id="voltar-topo">
             <a href="#wrapper">Voltar para o topo</a>
-        </div>
+        </div>-->
         <footer>
             <a name="secao-rodape" id="secao-rodape" class="screen-reader-text">Menu de rodapé</a>
             <div id="footer-menu" class="grid">
                 <div class="linha tamanho-<?= IDG_MAX_MENU_RODAPE ?>">
                     <?php for ($i = 1; $i <= IDG_MAX_MENU_RODAPE; $i++) : ?>
                         <?php $menu = idg_get_menu("idg-menu-rodape-$i"); ?>                    
-                        <?php if ($menu !== FALSE) :?>
+                        <?php if (is_array($menu) || is_object($menu)) :?>
                         <dl class="celula">
                             <dt class="menu-bloco">
                                 <?= $menu->name; ?>
@@ -45,6 +45,7 @@
             });
         </script>
         <?php wp_footer(); ?>
+    </div>
 </body>
 
 </html>
