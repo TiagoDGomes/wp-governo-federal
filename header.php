@@ -222,7 +222,7 @@
                 <?php $menu = idg_get_menu("idg-menu-lateral-esquerdo-$i"); ?>
                 <?php if (is_array($menu) || is_object($menu)) :?>
                 <dl class="menu-bloco <?= $menu->slug ?> <?= $menu->taxonomy ?>">
-                    <dt>
+                    <dt class="legenda">
                         <?= $menu->name; ?>
                     </dt>
                     <dd>
@@ -237,11 +237,11 @@
                 <?php endif; ?>
 
                 <?php if(idg_get_menu("idg-central-de-conteudos") !== FALSE) :?>
-                <dl class="menu-bloco">
-                    <dt class="centrais-de-conteudos">
+                <dl class="menu-bloco centrais-de-conteudos">
+                    <dt>
                         Centrais de Conteúdos
                     </dt>
-                    <dd class="centrais-de-conteudos">
+                    <dd>
                         <?php idg_build_menu("idg-central-de-conteudos"); ?>
                     </dd>
                 </dl>
