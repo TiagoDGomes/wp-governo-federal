@@ -8,7 +8,7 @@ add_action('after_setup_theme', 'idg_setup');
 
 if (!function_exists('idg_setup')) {
     function idg_setup() {
-        /*register_nav_menu( 'idg-menu-de-relevancia', __( 'IDG - Menu de relevância', 'idg' ) );
+        register_nav_menu( 'idg-menu-de-relevancia', __( 'IDG - Menu de relevância', 'idg' ) );
         //register_nav_menu( 'idg-redes-sociais', __( 'IDG - Menu "Redes Sociais"', 'idg' ) );
         register_nav_menu( 'idg-servicos', __( 'IDG - Menu "Serviços"', 'idg' ) );
         register_nav_menu( 'idg-em-destaque', __( 'IDG - Menu "Em destaque"', 'idg' ) );
@@ -20,7 +20,7 @@ if (!function_exists('idg_setup')) {
             register_nav_menu( "idg-menu-rodape-$i", __( "IDG - Menu rodapé $i", 'idg' ) );   
         }   
         
-        */
+        
         register_sidebar( array(
             'name' => 'Menu lateral esquerdo personalizado',
             'id' => 'menu-lateral-esquerdo',
