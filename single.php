@@ -61,7 +61,7 @@
 			    <?php if (get_the_tags()): ?>
 				<div class="tags">
 					<div class="legenda">Tópicos:</div>
-					<?php the_tags();?>
+					<?php the_tags( '<ul><li>', '</li><li>', '</li></ul>' ); ?>
 				</div>
 				<?php endif; ?>
 				<div class="categorias">
