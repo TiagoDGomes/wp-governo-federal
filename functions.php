@@ -20,12 +20,12 @@ if (!function_exists('idg_setup')) {
             register_nav_menu( "idg-menu-rodape-$i", __( "IDG - Menu rodapé $i", 'idg' ) );   
         }   
         
-
+        
         register_sidebar( array(
             'name' => 'Menu lateral esquerdo personalizado',
             'id' => 'menu-lateral-esquerdo',
             'description' => __( 'Permite personalizar o menu lateral à esquerda do site', 'idg' ),
-		    'before_widget' => '<div class="menu-bloco"><dl id="%1$s" class="widget %2$s">',
+		    'before_widget' => '<div class="menu-bloco widget %2$s"><dl id="%1$s">',
             'after_widget' => '</dd></dl></div>',
             'before_title' => '<dt>',
             'after_title' => '</dt><dd>',
@@ -35,56 +35,61 @@ if (!function_exists('idg_setup')) {
     
     }
 }
-function display_twitter_element(){ ?>
-    <input class="regular-text" type="text" name="twitter_url" id="twitter_url" value="<?php echo get_option('twitter_url'); ?>" />
+
+function display_input_element($element){ ?>
+    <input class="regular-text" type="text" name="<?= $element ?>" id="<?= $element ?>" value="<?php echo get_option($element); ?>" />
 <?php }
 
-function display_facebook_element(){ ?>
-    <input class="regular-text" type="text" name="facebook_url" id="facebook_url" value="<?php echo get_option('facebook_url'); ?>" />
-<?php }
+function display_twitter_element(){ 
+    display_input_element('twitter_url');
+}
 
-function display_youtube_element(){?>
-   	<input class="regular-text" type="text" name="youtube_url" id="youtube_url" value="<?php echo get_option('youtube_url'); ?>" />
-<?php }
+function display_facebook_element(){  
+    display_input_element('facebook_url');
+}
 
-function display_gplus_element(){?>
-   	<input class="regular-text" type="text" name="gplus_url" id="gplus_url" value="<?php echo get_option('gplus_url'); ?>" />
-<?php }
+function display_youtube_element(){ 
+    display_input_element('youtube_url');
+ }
 
-function display_instagram_element(){?>
-    <input class="regular-text" type="text" name="instagram_url" id="instagram_url" value="<?php echo get_option('instagram_url'); ?>" />
-<?php }
+function display_gplus_element(){ 
+    display_input_element('gplus_url');
+ }
 
-function display_tumblr_element(){?>
-   	<input class="regular-text" type="text" name="tumblr_url" id="tumblr_url" value="<?php echo get_option('tumblr_url'); ?>" />
-<?php }
+function display_instagram_element(){ 
+    display_input_element('instagram_url');
+ }
 
-function display_flickr_element(){?>
-	<input class="regular-text" type="text" name="flickr_url" id="flickr_url" value="<?php echo get_option('flickr_url'); ?>" />
-<?php }
+function display_tumblr_element(){ 
+    display_input_element('tumblr_url');
+  }
 
-function display_soundcloud_element(){?>
-	<input class="regular-text" type="text" name="soundcloud_url" id="soundcloud_url" value="<?php echo get_option('soundcloud_url'); ?>" />
-<?php }
+function display_flickr_element(){ 
+    display_input_element('flickr_url');
+  }
 
-function display_slideshare_element(){?>
-   	<input class="regular-text" type="text" name="slideshare_url" id="slideshare_url" value="<?php echo get_option('soundcloud_url'); ?>" />
-<?php }
+function display_soundcloud_element(){ 
+    display_input_element('soundcloud_url');
+  }
 
-function display_denominacao(){?>
-   	<input class="regular-text" type="text" name="idg_denominacao" id="idg_denominacao" value="<?php echo get_option('idg_denominacao'); ?>" />
-<?php }
+function display_slideshare_element(){ 
+    display_input_element('slideshare_url');
+  }
 
-function display_titulo(){ ?>
-   	<input class="regular-text" type="text" name="blogname" id="blogname" value="<?php echo get_option('blogname'); ?>" />
-<?php }
+function display_denominacao(){ 
+    display_input_element('idg_denominacao');
+  }
 
-function display_subordinacao(){?>
-    <input class="regular-text" type="text" name="blogdescription" id="blogdescription" value="<?php echo get_option('blogdescription'); ?>" />    
-<?php }
-function display_default_hat(){?>
-    <input class="regular-text" type="text" name="default_hat" id="default_hat" value="<?php echo get_option('default_hat'); ?>" />    
-<?php }
+function display_titulo(){  
+    display_input_element('blogname');
+  }
+
+function display_subordinacao(){ 
+    display_input_element('blogdescription');
+  }
+function display_default_hat(){ 
+    display_input_element('default_hat');
+ }
 
 
 function opcoes_de_tema(){?>
