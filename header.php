@@ -44,7 +44,7 @@
             <div id="cabecalho">
                 <div>
                     <div id="barra-atalhos">
-                        <div class="legenda screen-reader-text">Menu de atalhos</div>
+                        <div  class="legenda screen-reader-text">Menu de atalhos</div>
                         <ul>
                             <li>
                                 <a accesskey="1" href="#secao-conteudo" id="link-conteudo">
@@ -237,8 +237,8 @@
                 <?php endif; ?>
 
                 <?php if(idg_get_menu("idg-central-de-conteudos") !== FALSE) :?>
-                <div class="menu-bloco centrais-de-conteudos">
-                    <div>
+                <div class="bloco centrais-de-conteudos">
+                    <div class="legenda">
                         Centrais de Conteúdos
                     </div>
                     
@@ -249,4 +249,4 @@
             </nav>
             <div id="area-conteudo">
                 <main class="grid">
-                    <a name="secao-conteudo" id="secao-conteudo" class="screen-reader-text">Início</a>
+                    <a name="secao-conteudo" id="secao-conteudo" class="screen-reader-text"></a>
