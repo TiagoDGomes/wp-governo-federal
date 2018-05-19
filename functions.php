@@ -25,11 +25,23 @@ if (!function_exists('idg_setup')) {
             'name' => 'Menu lateral esquerdo personalizado',
             'id' => 'menu-lateral-esquerdo',
             'description' => __( 'Permite personalizar o menu lateral à esquerda do site', 'idg' ),
-		    'before_widget' => '<div class="menu-bloco widget %2$s"><dl id="%1$s">',
-            'after_widget' => '</dd></dl></div>',
-            'before_title' => '<dt>',
-            'after_title' => '</dt><dd>',
+		    'before_widget' => '<div class="bloco widget %2$s"><div id="%1$s">',
+            'after_widget' => '</div></div></div>',
+            'before_title' => '<div class="legenda">',
+            'after_title' => '</div><div>',
         ) );
+
+        register_sidebar( array(
+            'name' => 'Miolo central 1',
+            'id' => 'miolo-central-1',
+            'description' => __( 'Primeira posição da área principal do site', 'idg' ),
+		    'before_widget' => '<div class="bloco manchetes widget %2$s">',
+            'after_widget' => '</div>',
+            'before_title' => '<div class="legenda">',
+            'after_title' => '</div><div class="chapeu"></div>',
+        ) );
+
+        
         add_action("admin_menu", "add_theme_menu_item"); 
         add_action("admin_init", "display_theme_panel_fields");
     
@@ -234,3 +246,4 @@ if (!function_exists('idg_build_menu')) {
         }
     }
 }
+include_once('widgets.php');

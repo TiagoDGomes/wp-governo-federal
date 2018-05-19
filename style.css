@@ -5,3 +5,8 @@ Description: Tema IDG feito para WordPress
 Author: Tiago Gomes
 Author URI: http://github.com/TiagoDGomes/wp-idg-theme
 */
+
+.admin-bar .alerta-max-caracteres,
+.customize-partial-edit-shortcuts-shown .alerta-max-caracteres{
+    border-bottom: 2px dotted red;
+}
