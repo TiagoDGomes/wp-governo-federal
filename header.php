@@ -208,27 +208,27 @@
                 <a name="secao-menu" id="secao-menu" class="screen-reader-text">Menu principal</a>
                 <?php $menu_relevancia = idg_get_menu("idg-menu-de-relevancia"); ?>
                 <?php if($menu_relevancia !== FALSE) :?>
-                <dl class="menu-relevancia">
-                    <dt class="screen-reader-text">
+                <div class="menu-relevancia">
+                    <div class="screen-reader-text">
                         Menu de relevância
-                    </dt>
-                    <dd>
-                        <?php idg_build_menu('idg-menu-de-relevancia'); ?>
-                    </dd>
-                </dl>
+                    </div>
+                    
+                    <?php idg_build_menu('idg-menu-de-relevancia'); ?>
+                    
+                </div>
                 <?php endif; ?>
 
                 <?php for ($i = 1; $i <= IDG_MAX_MENU_LATERAL_ESQUERDO; $i++) : ?>
                 <?php $menu = idg_get_menu("idg-menu-lateral-esquerdo-$i"); ?>
                 <?php if (is_array($menu) || is_object($menu)) :?>
-                <dl class="menu-bloco <?= $menu->slug ?> <?= $menu->taxonomy ?>">
-                    <dt class="legenda">
+                <div class="bloco <?= $menu->slug ?> <?= $menu->taxonomy ?>">
+                    <div class="legenda">
                         <?= $menu->name; ?>
-                    </dt>
-                    <dd>
-                        <?php idg_build_menu("idg-menu-lateral-esquerdo-$i"); ?>
-                    </dd>
-                </dl>
+                    </div>
+                    
+                    <?php idg_build_menu("idg-menu-lateral-esquerdo-$i"); ?>
+                    
+                </div>
                 <?php endif; ?>
                 <?php endfor; ?>
 
@@ -237,14 +237,14 @@
                 <?php endif; ?>
 
                 <?php if(idg_get_menu("idg-central-de-conteudos") !== FALSE) :?>
-                <dl class="menu-bloco centrais-de-conteudos">
-                    <dt>
+                <div class="menu-bloco centrais-de-conteudos">
+                    <div>
                         Centrais de Conteúdos
-                    </dt>
-                    <dd>
-                        <?php idg_build_menu("idg-central-de-conteudos"); ?>
-                    </dd>
-                </dl>
+                    </div>
+                    
+                    <?php idg_build_menu("idg-central-de-conteudos"); ?>
+                    
+                </div>
                 <?php endif; ?>
             </nav>
             <div id="area-conteudo">
