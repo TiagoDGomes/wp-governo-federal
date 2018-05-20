@@ -1,15 +1,18 @@
 <?php get_header();?>
 
 	<?php if (have_posts()): ?>
-		<?php while (have_posts()): ?>
+
+		<?php while (have_posts()): ?>		
 			<?php the_post();?>
 
 			<div class="chapeu">
 				<?=get_post_meta(get_the_ID(), 'Chapéu', true);?>
 			</div>
+
 			<h2>
 				<?php the_title();?>
 			</h2>
+
 			<div class="descricao">
 
 				<?php if (has_excerpt()): ?>
@@ -17,7 +20,9 @@
 				<?php endif;?>
 
 			</div>
+
 			<div class="informacoes">
+
 				<div class="screen-reader-text">Informações sobre o artigo:</div>
 				
 				<dl class="info">
@@ -57,6 +62,7 @@
 				<?php the_content();?>
 
 			</div>
+
 			<div class="main-rodape">
 			    <?php if (get_the_tags()): ?>
 				<div class="tags">
@@ -69,6 +75,7 @@
 					<?php the_category();?>
 				</div>
 			</div>
+			
 		<?php endwhile;else: ?>
 
 

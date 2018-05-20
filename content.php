@@ -1,6 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class('noticia'); ?>>
-
-    
+<article id="post-<?php the_ID(); ?>" <?php post_class('noticia'); ?>>    
     <div class="informacoes">
         <?php if ( 'post' == get_post_type() ) : ?>
             <div class="screen-reader-text">Informações sobre a publicação:</div>
@@ -33,19 +31,19 @@
             <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
         </h3>
         <div class="conteudo">
-           <?php //if(get_object_taxonomies(get_post_type())) {
-                    if (has_excerpt()){                                
-                            the_excerpt();
-                    } else {
-                            echo wp_strip_all_tags(get_the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ));
-                    }
-                    wp_link_pages(
-                            array(
-                                'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>',
-                                'after'  => '</div>',
-                            )
-                    );
-                //}
+           <?php 
+				if (has_excerpt()){                                
+					the_excerpt();
+				} else {
+					echo wp_strip_all_tags(get_the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ));
+				}
+				wp_link_pages(
+					array(
+						'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>',
+						'after'  => '</div>',
+					)
+				);
+               
             ?>
         </div>
 
