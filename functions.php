@@ -32,7 +32,7 @@ if (!function_exists('idg_setup')) {
         ) );
 
         register_sidebar( array(
-            'name' => 'Miolo central 1',
+            'name' => 'Miolo central',
             'id' => 'miolo-central-1',
             'description' => __( 'Primeira posição da área principal do site', 'idg' ),
 		    'before_widget' => '<div class="bloco manchetes widget %2$s">',
