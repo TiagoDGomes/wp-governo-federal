@@ -114,7 +114,7 @@
                         </a>
                     </div>
 
-                    <form action="<?= home_url('/') ?>">
+                    <form class="busca-geral" action="<?= home_url('/') ?>">
                         <fieldset id="barra-busca">
                             <legend>Ferramenta de busca</legend>
                             <label for="busca-portal">Buscar no portal</label>
