@@ -19,47 +19,7 @@
     </h2>
 
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <div class="noticia">
-            <div class="informacoes">
-                <div class="screen-reader-text">Informações sobre a publicação:</div>
-                <div class="info">
-                    <div class="data">
-                        <time datetime="<?php the_time('Y-m-d H:i') ?>2000-01-31 12:00">
-                            <span class="data"><?php the_time('d/m/Y') ?></span>
-                            <span class="hora"><?php the_time('H:i') ?></span>
-                        </time>
-                    </div>
-                    <!--
-                    <div class="tipo">
-                        <span class="video">Vídeo</span>
-                    </div>
-                    -->
-                </div>
-            </div><!-- fim .informacoes -->
-            <div class="publicacao">
-                <div class="chapeu"><?=get_post_meta(get_the_ID(), 'Chapéu', true);?></div>
-                <h3>
-                    <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>    
-                </h3>
-                <div class="conteudo">
-                    <?php if (has_excerpt()): ?>
-                        <?php the_excerpt();?>                    
-                    <?php else:?>
-                        <?php the_content(); ?>
-                    <?php endif;?>
-                </div>
-                <?php if (get_the_tags()): ?>
-                <div class="tags">
-                    <div class="legenda">Tópicos:</div>
-                    <?php the_tags( '<ul><li>', '</li><li>', '</li></ul>' ); ?>
-                </div>
-                <?php endif; ?>
-                <div class="categorias">
-                    <div class="legenda">Registrado em: </div>
-                    <?php the_category();?>
-                </div>
-            </div><!-- fim .publicacao -->
-        </div><!-- fim .noticia -->
+        <?php include 'content.php'?>
         <?php endwhile?>
         <?php else: ?>
         <div class="artigo">
