@@ -6,16 +6,19 @@
     <?php /* If this is a category archive */ if (is_category()) { ?>
         <?php echo single_cat_title(); ?>
     <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
-        Arquivo de <?php the_time('j de F de Y'); ?>
+        Publicações de <?php the_time('j de F de Y'); ?>
     <?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
-        Arquivo de <?php the_time('F de Y'); ?>
+        Publicações de <?php the_time('F de Y'); ?>
     <?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
-        Arquivo de <?php the_time('Y'); ?>
+        Publicações de <?php the_time('Y'); ?>
     <?php /* If this is an author archive */ } elseif (is_author()) { ?>
-        Arquivo do Autor
+        Publicações
     <?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
         Arquivo do Blog
+    <?php /* If this is a paged archive */ } elseif (is_tag()) { ?>
+        Tópicos sobre <?php echo single_cat_title(); ?>
     <?php } ?>
+
     </h2>
 
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
