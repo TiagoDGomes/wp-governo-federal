@@ -33,30 +33,43 @@
             <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
         </h3>
         <div class="conteudo">
-           <?php if (has_excerpt()){                                
-                    the_excerpt();
-                 } else {
-                    the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) );
-                 }
-                 wp_link_pages(
-                        array(
-                            'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>',
-                            'after'  => '</div>',
-                        )
-                );
+           <?php //if(get_object_taxonomies(get_post_type())) {
+                    if (has_excerpt()){                                
+                            the_excerpt();
+                    } else {
+                            echo wp_strip_all_tags(get_the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ));
+                    }
+                    wp_link_pages(
+                            array(
+                                'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>',
+                                'after'  => '</div>',
+                            )
+                    );
+                //}
             ?>
         </div>
-        <div class="tags">
-            <div class="legenda">Tópicos:</div>
-            <?= get_the_tag_list(); ?>
-        </div>
-        <div class="categorias">
-            <div class="legenda">Registrado em: </div>
-            <?= get_the_category_list()?>
-			
-        </div>
+
+        <?php if ( is_object_in_taxonomy( get_post_type(), 'post_tag' ) ) : // Hide tag text when not supported ?>
+            <?php $tags_list = get_the_tag_list( '', __( ', ', 'twentyeleven' ) ); if ( $tags_list ) : ?>
+                <div class="tags">
+                    <div class="legenda">Tópicos:</div>
+                    <?= $tags_list ?>
+                </div>
+            <?php endif; // End if if ( $tags_list )  ?>  
+        <?php endif; // End if is_object_in_taxonomy( get_post_type(), 'post_tag' ) ?>
+
+        <?php if ( is_object_in_taxonomy( get_post_type(), 'category' )) : // Hide category text when not supported ?>
+            <?php $categories_list = get_the_category_list(); if ($categories_list) : ?>
+                <div class="categorias">
+                    <div class="legenda">Registrado em: </div>
+                    <?= $categories_list ?>			
+                </div>    
+            <?php endif; // End if if ( $categories_list )  ?>    
+        <?php endif; // End if is_object_in_taxonomy( get_post_type(), 'category' ) ?>
+        <div><?php //var_dump(get_object_taxonomies(get_post_type()))  ?></div>
     </div>
     <!-- fim .publicacao -->
+    
     <?php if ( comments_open() && ! post_password_required() ) : ?>
 		<!--<div class="comments-link">
 			<?php comments_popup_link( '<span class="leave-reply">' . __( 'Reply', 'twentyeleven' ) . '</span>', _x( '1', 'comments number', 'twentyeleven' ), _x( '%', 'comments number', 'twentyeleven' ) ); ?>

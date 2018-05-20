@@ -67,7 +67,7 @@
                                 <label for="b_df">Data final:</label>
                             </div>
                             <div class="meio">
-                                <input id="b_df" name="b_df" type="date">
+                                <input id="b_df" name="b_df" type="date" max="<?= date('Y-m-d') ?>">
                             </div>
                         </div>
                     </fieldset>
