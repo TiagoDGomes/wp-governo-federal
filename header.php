@@ -236,13 +236,13 @@
                 <?php if ( is_active_sidebar( 'menu-lateral-esquerdo' ) ) : ?>
                 <?php dynamic_sidebar( 'menu-lateral-esquerdo' ); ?>
                 <?php endif; ?>
-
-                <?php if(idg_get_menu("idg-central-de-conteudos") !== FALSE) :?>
+                <?php $menu_relevancia = idg_get_menu("idg-central-de-conteudos");?>
+                <?php if($menu_relevancia !== FALSE && $menu_relevancia !== NULL ) :?>
                 <div class="bloco centrais-de-conteudos">
                     <div class="legenda">
                         Centrais de Conteúdos
                     </div>
-                    
+                                        
                     <?php idg_build_menu("idg-central-de-conteudos"); ?>
                     
                 </div>
