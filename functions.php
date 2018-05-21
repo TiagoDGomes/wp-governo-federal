@@ -177,10 +177,22 @@ if (!function_exists('add_theme_menu_item')) {
 }
 add_filter( 'body_class', 'idg_body_class' );
 function idg_body_class( $classes ) {
-    
-    $classes[] = get_option('theme_color');
-    
-    return $classes;
+
+    $c[] = get_option('theme_color');
+    $menulocations = get_nav_menu_locations();
+    $contem_menu_lateral = false;
+    foreach ($menulocations as $menuname => $menuvalue){
+        if (strpos('idg-menu-lateral',$menuname)>=0 && $menuvalue!==0){
+            $contem_menu_lateral = TRUE;
+            break;
+        }
+    }
+    if ($contem_menu_lateral){
+        $c[] = 'com-menu';
+    } else {
+        $c[] = 'sem-menu';
+    }
+    return $c;
 }
 
 
