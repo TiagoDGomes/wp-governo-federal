@@ -178,7 +178,7 @@ if (!function_exists('add_theme_menu_item')) {
 add_filter( 'body_class', 'idg_body_class' );
 function idg_body_class( $classes ) {
 
-    $c[] = get_option('theme_color');
+    $classes[] = get_option('theme_color');
     $menulocations = get_nav_menu_locations();
     $contem_menu_lateral = false;
     foreach ($menulocations as $menuname => $menuvalue){
@@ -188,11 +188,11 @@ function idg_body_class( $classes ) {
         }
     }
     if ($contem_menu_lateral){
-        $c[] = 'com-menu';
+        $classes[] = 'com-menu';
     } else {
-        $c[] = 'sem-menu';
+        $classes[] = 'sem-menu';
     }
-    return $c;
+    return $classes;
 }
 
 
