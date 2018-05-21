@@ -12,7 +12,7 @@
            
             <?php if ( have_posts() ) : ?>
                 <p><?php printf( _e('Resultados da busca por') ) ?> <em><?= get_search_query() ?></em>.</p>
-                <div class="screen-reader-texts">
+                <div class="screen-reader-text">
                     <p>Você pode:</p>
                     <ul>
                         <li><a href="#nav-resultados">Ir para os resultados</a></li>
@@ -48,31 +48,34 @@
                     <p class="screen-reader-text">As opções a seguir fazem parte do filtro de busca.</p>
                     <fieldset>
                         <legend>Por categoria</legend>
-
+                        <ul>
                         <?php foreach($lista_categorias as $categoria): ?> 
 
-                            <div class="opcao">
+                            <li>
                                 <input <?= idg_busca_opcao_checked('s_cat',$categoria->cat_ID) ?> name="s_cat[]" id="categoria-<?= $categoria->slug ?>" type="checkbox" value="<?= $categoria->cat_ID ?>">
                                 <label for="categoria-<?= $categoria->slug ?>"><?= $categoria->name ?></label>
-                            </div>
+                            </li>
 
                         <?php endforeach ; ?>
 
+                        </ul> 
                     </fieldset>
                     
                     <?php $lista_tags = get_tags(); ?>
                        
                     <fieldset>
                         <legend>Por tópicos</legend>
+                        <ul>
                         <?php foreach($lista_tags as $tag): ?> 
                         
-                            <div class="opcao">
+                            <li>
                                 <input <?= idg_busca_opcao_checked('s_tag',$tag->term_id ) ?>  name="s_tag[]" id="tag-<?= $tag->slug ?>" type="checkbox" value="<?= $tag->term_id  ?>">
                                 <label for="tag-<?= $tag->slug ?>"><?= $tag->name ?></label>
-                            </div>
+                            </li>
 
                         <?php endforeach ; ?>
 
+                        </ul>
                     </fieldset>
                     
                 
