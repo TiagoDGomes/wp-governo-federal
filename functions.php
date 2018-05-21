@@ -246,4 +246,68 @@ if (!function_exists('idg_build_menu')) {
         }
     }
 }
+
+
+
+function idg_default_search ( $query ) {
+	if ( ! is_admin() AND $query->is_main_query() AND $query->is_search() ) {
+        $query->set( 'posts_per_page', 20 );  //limitação de 20 páginas por pesquisa
+        if (isset($_GET['s_cat'])){
+            if(is_array($_GET['s_cat'])){
+                $cat_IDs = array_map('intval',$_GET['s_cat']);
+                $query->set( 'category__in', $cat_IDs);  
+            }
+        }     
+        if (isset($_GET['s_tag'])){
+            if(is_array($_GET['s_tag'])){
+                $tag_IDs = array_map('intval',$_GET['s_tag']);
+                $query->set( 'tag__in', $tag_IDs);  
+            }
+        }
+        $date_query = array();
+      
+        $data_inicial = idg_busca_data_enviada('s_di');
+        if ($data_inicial){
+            $date_query['after'] = $data_inicial;
+        }
+        $data_final = idg_busca_data_enviada('s_df');
+        if ($data_final){
+            $date_query['before'] = $data_final;
+        }
+        if (count($date_query)>0){
+            $query->set('date_query', $date_query);
+        }
+	}
+}
+function idg_busca_data_enviada($param){
+    if (!isset($_GET[$param])){
+        return '';
+    }
+    $time = strtotime($_GET[$param]);
+
+    $newformat = date('Y-m-d',$time);
+    
+    return $newformat;
+}
+
+add_action( 'pre_get_posts', 'idg_default_search' );
+
+
+function idg_busca_opcao_checked($tipo, $c_id){
+    if (!isset($_GET[$tipo])){
+        return '';
+    }
+    if (array_search("$c_id", $_GET[$tipo])===FALSE){
+        return '';
+    } else {
+        return ' checked="checked" ';
+    }
+}
+
+
+
+
+
+
+
 include_once('widgets.php');
