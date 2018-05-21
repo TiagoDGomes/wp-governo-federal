@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>
-        <?php wp_title(''); ?>
+        <?php wp_title(); ?>
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -37,6 +37,7 @@
 <?php $theme_color = get_option('theme_color'); ?>
 
 <body <?php body_class( 'class-name' ); ?>>
+    <a class="screen-reader-text" href="#secao-conteudo">Ir para o conteúdo</a>
     <script src="<?= get_template_directory_uri()  ?>/padraogoverno/resources/js/acessibilidade.js"></script>
     <div id="barra-brasil"></div>
     <div id="tudo">
@@ -44,7 +45,7 @@
             <div id="cabecalho">
                 <div>
                     <div id="barra-atalhos">
-                        <div class="legenda screen-reader-text">Menu de atalhos</div>
+                        <div  class="legenda screen-reader-text">Menu de atalhos</div>
                         <ul>
                             <li>
                                 <a accesskey="1" href="#secao-conteudo" id="link-conteudo">
@@ -114,7 +115,7 @@
                         </a>
                     </div>
 
-                    <form action="<?= home_url('/') ?>">
+                    <form class="busca-geral" action="<?= home_url('/') ?>">
                         <fieldset id="barra-busca">
                             <legend>Ferramenta de busca</legend>
                             <label for="busca-portal">Buscar no portal</label>
@@ -208,27 +209,27 @@
                 <a name="secao-menu" id="secao-menu" class="screen-reader-text">Menu principal</a>
                 <?php $menu_relevancia = idg_get_menu("idg-menu-de-relevancia"); ?>
                 <?php if($menu_relevancia !== FALSE) :?>
-                <dl class="menu-relevancia">
-                    <dt class="screen-reader-text">
+                <div class="menu-relevancia">
+                    <div class="screen-reader-text">
                         Menu de relevância
-                    </dt>
-                    <dd>
-                        <?php idg_build_menu('idg-menu-de-relevancia'); ?>
-                    </dd>
-                </dl>
+                    </div>
+                    
+                    <?php idg_build_menu('idg-menu-de-relevancia'); ?>
+                    
+                </div>
                 <?php endif; ?>
 
                 <?php for ($i = 1; $i <= IDG_MAX_MENU_LATERAL_ESQUERDO; $i++) : ?>
                 <?php $menu = idg_get_menu("idg-menu-lateral-esquerdo-$i"); ?>
                 <?php if (is_array($menu) || is_object($menu)) :?>
-                <dl class="menu-bloco <?= $menu->slug ?> <?= $menu->taxonomy ?>">
-                    <dt class="legenda">
+                <div class="bloco <?= $menu->slug ?> <?= $menu->taxonomy ?>">
+                    <div class="legenda">
                         <?= $menu->name; ?>
-                    </dt>
-                    <dd>
-                        <?php idg_build_menu("idg-menu-lateral-esquerdo-$i"); ?>
-                    </dd>
-                </dl>
+                    </div>
+                    
+                    <?php idg_build_menu("idg-menu-lateral-esquerdo-$i"); ?>
+                    
+                </div>
                 <?php endif; ?>
                 <?php endfor; ?>
 
@@ -237,16 +238,16 @@
                 <?php endif; ?>
 
                 <?php if(idg_get_menu("idg-central-de-conteudos") !== FALSE) :?>
-                <dl class="menu-bloco centrais-de-conteudos">
-                    <dt>
+                <div class="bloco centrais-de-conteudos">
+                    <div class="legenda">
                         Centrais de Conteúdos
-                    </dt>
-                    <dd>
-                        <?php idg_build_menu("idg-central-de-conteudos"); ?>
-                    </dd>
-                </dl>
+                    </div>
+                    
+                    <?php idg_build_menu("idg-central-de-conteudos"); ?>
+                    
+                </div>
                 <?php endif; ?>
             </nav>
             <div id="area-conteudo">
                 <main class="grid">
-                    <a name="secao-conteudo" id="secao-conteudo" class="screen-reader-text">Início</a>
+                    <a name="secao-conteudo" id="secao-conteudo" class="screen-reader-text"></a>
