@@ -177,16 +177,25 @@ if (!function_exists('add_theme_menu_item')) {
 }
 add_filter( 'body_class', 'idg_body_class' );
 function idg_body_class( $classes ) {
-
+    
     $classes[] = get_option('theme_color');
-    $menulocations = get_nav_menu_locations();
+    
+    $menus = get_nav_menu_locations();
     $contem_menu_lateral = false;
-    foreach ($menulocations as $menuname => $menuvalue){
-        if (strpos('idg-menu-lateral',$menuname)>=0 && $menuvalue!==0){
-            $contem_menu_lateral = TRUE;
-            break;
+
+    if (count( get_option('sidebars_widgets')['menu-lateral-esquerdo'] ) > 0){
+        $contem_menu_lateral = TRUE;
+    } else {
+        foreach ($menus as $menuname => $menuvalue){
+            $pos = strpos($menuname,'menu-lateral');
+            if ($pos !== FALSE && $menuvalue !==0){
+                $contem_menu_lateral = TRUE;
+                $classes[] = "x-${menuname}-p${pos}";
+                break;
+            }
         }
     }
+   
     if ($contem_menu_lateral){
         $classes[] = 'com-menu';
     } else {
