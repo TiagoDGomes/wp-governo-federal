@@ -30,12 +30,7 @@
             <div class="legenda">
                 <h3>Pesquisa</h3>
                 <div class="busca-geral">
-                    <fieldset>
-                        <legend>Ferramenta de busca</legend>
-                        <label for="pagina-caixa-busca-portal">Buscar no portal</label>
-                        <input id="pagina-caixa-busca-portal" name="s" type="text" size="18" title="Caixa de pesquisa" placeholder="Digite aqui para pesquisar" value="<?= get_search_query() ?>">
-                        <input type="submit" value="Pesquisar">
-                    </fieldset>
+                    <?php fieldset_busca('','pagina-caixa-busca-portal','s', 'Caixa de pesquisa', 'Digite aqui para pesquisar'); ?>
                 </div>
             </div>
             

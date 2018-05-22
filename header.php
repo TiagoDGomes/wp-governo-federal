@@ -118,13 +118,8 @@
                         </a>
                     </div>
 
-                    <form class="busca-geral" action="<?= home_url('/') ?>">
-                        <fieldset id="barra-busca">
-                            <legend>Ferramenta de busca</legend>
-                            <label for="busca-portal">Buscar no portal</label>
-                            <input name="s" type="text" size="18" title="Buscar no portal" placeholder="Buscar no portal" id="busca-portal">
-                            <input type="submit" value="Buscar no portal">
-                        </fieldset>
+                    <form class="busca-geral" action="<?= home_url('/') ?>">                        
+                        <?php fieldset_busca('barra-busca','busca-portal','s'); ?>
                     </form>
 
                     <div id="barra-redes-sociais">

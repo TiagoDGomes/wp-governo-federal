@@ -89,3 +89,15 @@ function show_field_opcoes_de_tema(){?>
         <option <?= get_option('theme_color') == 'azul' ? 'selected="selected"': '' ?> value="azul">Azul</option>
     </select>		
 <?php }
+
+
+function fieldset_busca($fieldset_id, $id, $name='s', $title='Buscar no portal', $placeholder='Buscar no portal', $submit_label='Pesquisar'){ ?>
+
+    <fieldset<?= $fieldset_id ? " id=\"$fieldset_id\"": '' ?>>
+        <legend>Ferramenta de busca</legend>
+        <label for="<?= $id ?>">Buscar no portal</label>
+        <input name="<?= $name ?>" type="text" title="<?= $title ?>" placeholder="<?= $placeholder ?>" id="<?= $id ?>" value="<?= get_search_query() ?>" >
+        <input type="submit" value="<?= $submit_label ?>">
+    </fieldset>
+
+<?php }
