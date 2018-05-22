@@ -35,9 +35,7 @@
 </head>
 
 <body <?php body_class( ); ?>>
-    <a class="screen-reader-text" href="#secao-conteudo">Ir para o conteúdo</a>
-    <script src="<?= get_template_directory_uri()  ?>/padraogoverno/resources/js/acessibilidade.js"></script>
-    <div id="barra-brasil"></div>
+    <script src="<?= get_template_directory_uri()  ?>/padraogoverno/resources/js/acessibilidade.js"></script>    
     <div id="tudo">
         <header>
             <div id="cabecalho">
@@ -186,10 +184,11 @@
                     </div>
                 </div>
             </div>
+            
             <div id="barra-servicos">
                 <?php idg_build_menu('idg-servicos'); ?>
             </div>
-
+            <div id="barra-brasil"></div>
             <div id="barra-breadcrumb">
                 <span class="legenda screen-reader-text">Localização da página</span>
                 <span id="breadcrumbs-you-are-here">Você está aqui:</span>

@@ -10,3 +10,6 @@ Author URI: http://github.com/TiagoDGomes/wp-idg-theme
 .customize-partial-edit-shortcuts-shown .alerta-max-caracteres{
     border-bottom: 2px dotted red;
 }
+.admin-bar #barra-brasil{
+    top: 32px;
+}

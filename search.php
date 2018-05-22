@@ -105,10 +105,11 @@
             
             <!-- RESULTADOS DAS BUSCAS -->
             <a name="nav-resultados" id="nav-resultados"></a>
+            <p class="screen-reader-text">Você está nos resultados da pesquisa.</p>
             <div class="resultados">
-                <?php if ( have_posts() ) : ?>
-                    <p class="screen-reader-text">Você está nos <em>resultados da busca.</em></p>
+                <?php if ( have_posts() ) : $count_posts=0; ?>
                     <?php while (have_posts()) : ?>
+                         <p class="screen-reader-text">Informações sobre a publicação (<?= ++$count_posts ?> de <?=  $wp_query->found_posts ?>)</p>
                          <?php  the_post();  ?>
                          <?php  get_template_part( 'content', get_post_format() );    ?>                          
                     <?php  endwhile; ?>

@@ -1,16 +1,16 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class('noticia'); ?>>    
     <div class="informacoes">
         <?php if ( 'post' == get_post_type() ) : ?>
-            <div class="screen-reader-text">Informações sobre a publicação:</div>
+            
             <div class="info">
                 <div class="data">
                     <time datetime="<?php the_time('Y-m-d H:i')?>">                        
-                        <span class="data"><?php the_time('d/m/Y')?></span>
-                        <span class="hora"><?php the_time('H:i')?></span>                        
+                        <span class="data"><span class="screen-reader-text">Data de publicação: </span><?php the_time('d/m/Y')?></span>
+                        <span class="hora"><span class="screen-reader-text">Hora da publicação: </span><?php the_time('H:i')?></span>                        
 					</time>
                     <time style="display:none" datetime="<?php the_modified_time('Y-m-d H:i')?>">                        
-                        <span class="data"><?php the_modified_time('d/m/Y')?></span>
-                        <span class="hora"><?php the_modified_time('H:i')?></span>                        
+                        <span class="data"><span class="screen-reader-text">Data de modificação: </span><?php the_modified_time('d/m/Y')?></span>
+                        <span class="hora"><span class="screen-reader-text">Hora de modificação: </span><?php the_modified_time('H:i')?></span>                        
 					</time>
                 </div>
                 <div class="autor" style="display: none">
