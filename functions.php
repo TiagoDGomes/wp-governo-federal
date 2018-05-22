@@ -196,7 +196,7 @@ if (!function_exists('idg_build_menu')) {
             echo '<ul>';
             foreach($menuitems as $menuitem){
                 $id = '';
-                $class_ = '';
+                $class_ = $menuitem->classes;
                 if ($menu_name=='idg-central-de-conteudos'){
                     $itens = array( 'videos'=> array('vídeos'),
                                     'audios'=> array('áudios','Áudios'),
@@ -208,21 +208,20 @@ if (!function_exists('idg_build_menu')) {
                                 );
                     $title_low = strtolower($menuitem->title);
                     if (array_key_exists($title_low, $itens)){
-                        $class_ =  $title_low;
+                        $class_[] =  $title_low;
                     } else {
                         foreach($itens as $key => $value){
                             if (in_array($title_low, $value)|| 
                                 substr($title_low,0,4) == substr($key,0,4) || 
                                 substr($menuitem->title,0,4) == substr($key,0,4)  ){
-                                $class_ =  $key;
+                                $class_[] =  $key;
                                 break;
                             }                            
                         }
-                    }                                                        
-                    //$class_ = strtolower($menuitem->title);
+                    }                                        
                 }
                 ?>                
-                <li<?= $id ?> class="<?= $class_ ?>"  >
+                <li<?= $id ?> class="<?= implode($class_, '') ?>" >
                     <a class="internal-link" href="<?= $menuitem->url ?>" ><?= $menuitem->title ?></a>
                 </li>                
                 <?php
