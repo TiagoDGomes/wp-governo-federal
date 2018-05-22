@@ -55,6 +55,11 @@ function display_input_element($element){ ?>
     <input class="regular-text" type="text" name="<?= $element ?>" id="<?= $element ?>" value="<?php echo get_option($element); ?>" />
 <?php }
 
+function display_checkbox_element($element, $label){ ?>
+    <input type="checkbox" name="<?= $element ?>" id="<?= $element ?>" <?= get_option($element) ? 'checked="checked"': '' ?>" />
+    <label for="<?= $element ?>"><?= $label ?></label>
+<?php }
+
 function display_twitter_element(){ 
     display_input_element('twitter_url');
 }
@@ -112,6 +117,9 @@ function display_subordinacao(){
 function display_default_hat(){ 
     display_input_element('default_hat');
  }
+ function display_show_errors(){
+    display_checkbox_element('show_errors_max_char', 'Mostrar erros ao extrapolar limite de caracteres do padrão IDG (somente para administradores)');
+ }
 
 
 function opcoes_de_tema(){?>
@@ -133,10 +141,12 @@ function display_theme_panel_fields(){
     add_settings_field("idg_titulo", "Título", "display_titulo", "opcoes-gerais", "section");
     add_settings_field("idg_subordinacao", "Subordinação", "display_subordinacao", "opcoes-gerais", "section");
     add_settings_field("default_hat", "Chapéu padrão", "display_default_hat", "opcoes-gerais", "section");    
+    add_settings_field("show_errors", "Erros", "display_show_errors", "opcoes-gerais", "section");    
     register_setting("section", "idg_denominacao");
     register_setting("section", "blogname");
     register_setting("section", "blogdescription");    
-    register_setting("section", "default_hat");
+    register_setting("section", "default_hat");   
+    register_setting("section", "show_errors_max_char");
     
     add_settings_section("section", "Redes Sociais", null, "redes-sociais");
 	add_settings_field("twitter_url", "URL da página do Twitter", "display_twitter_element", "redes-sociais", "section");

@@ -46,7 +46,7 @@ class IDG_Widget_Manchetes extends WP_Widget {
                             </div>
                             <h2>                                
                                 <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">                                
-                                    <?php if ( current_user_can( 'administrator' ) ): ?>
+                                    <?php if ( current_user_can( 'administrator' ) && get_option('show_errors_max_char') ): ?>
                                         <span><?= mb_substr(get_the_title(),0,IDG_MAX_NUM_CARACT_TITULO) ;?></span><span class="alerta-max-caracteres"><?= mb_substr(get_the_title(),IDG_MAX_NUM_CARACT_TITULO) ;?></span>
                                     <?php else: ?>
                                         <?php the_title(); ?>
@@ -54,7 +54,7 @@ class IDG_Widget_Manchetes extends WP_Widget {
                                 </a>
                             </h2>                            
                             <?php if (has_excerpt()): ?>             
-                                <?php if ( current_user_can( 'administrator' ) ): ?>
+                                <?php if ( current_user_can( 'administrator' ) && get_option('show_errors_max_char')): ?>
                                     <span><?= mb_substr(get_the_excerpt(), 0, IDG_MAX_NUM_CARACT_SUBTITULO) ;?></span><span class="alerta-max-caracteres"><?= mb_substr(get_the_excerpt(), IDG_MAX_NUM_CARACT_SUBTITULO) ;?></span>
                                 <?php else: ?>
                                     <?php the_excerpt(); ?>
