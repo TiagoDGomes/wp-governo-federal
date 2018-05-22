@@ -69,18 +69,25 @@
                             </li>
                         </ul>
                     </div>
+                    <?php $english_url = get_option('english_url'); ?>
+                    <?php $spanish_url = get_option('spanish_url'); ?>
+                    <?php if ($spanish_url || $english_url) :?>
                     <div id="barra-idiomas">
                         <div class="legenda screen-reader-text">Menu de idiomas</div>
                         <ul>
+                            <?php if ($english_url) :?>
                             <li>
-                                <a href="#">English</a>
+                                <a href="<?= $english_url ?>">English</a>
                             </li>
+                            <?php endif; ?>
+                            <?php if ($spanish_url) :?>
                             <li>
-                                <a href="#">Español</a>
+                                <a href="<?= $spanish_url ?>">Español</a>
                             </li>
+                            <?php endif; ?>
                         </ul>
                     </div>
-
+                    <?php endif; ?>
                     <div id="barra-acessibilidade">
                         <div class="legenda screen-reader-text">Menu de acessibilidade</div>
                         <ul>

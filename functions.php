@@ -87,9 +87,16 @@ function display_soundcloud_element(){
     display_input_element('soundcloud_url');
   }
 
-function display_slideshare_element(){ 
+  function display_slideshare_element(){ 
     display_input_element('slideshare_url');
   }
+
+function display_english_element(){ 
+    display_input_element('english_url');
+}
+function display_spanish_element(){ 
+    display_input_element('spanish_url');
+}
 
 function display_denominacao(){ 
     display_input_element('idg_denominacao');
@@ -140,7 +147,8 @@ function display_theme_panel_fields(){
     add_settings_field("tumblr_url", "URL da página do Tumblr", "display_tumblr_element", "redes-sociais", "section");    
     add_settings_field("flickr_url", "URL da página do Flickr", "display_flickr_element", "redes-sociais", "section");    
     add_settings_field("soundcloud_url", "URL da página do Soundcloud", "display_soundcloud_element", "redes-sociais", "section");    
-    add_settings_field("slideshare_url", "URL da página do Slideshare", "display_slideshare_element", "redes-sociais", "section");    
+    add_settings_field("slideshare_url", "URL da página do Slideshare", "display_slideshare_element", "redes-sociais", "section");  
+    
     register_setting("section", "twitter_url");
     register_setting("section", "facebook_url");
     register_setting("section", "youtube_url");
@@ -150,6 +158,14 @@ function display_theme_panel_fields(){
     register_setting("section", "flickr_url");
     register_setting("section", "soundcloud_url");
     register_setting("section", "slideshare_url");
+
+    
+    add_settings_section("section", "Menu de idiomas", null, "menu-idiomas");	  
+    add_settings_field("english_url", "URL do link para Inglês", "display_english_element", "menu-idiomas", "section");   
+    register_setting("section", "english_url");
+    add_settings_field("spanish_url", "URL do link para Espanhol", "display_spanish_element", "menu-idiomas", "section");   
+    register_setting("section", "spanish_url");
+ 
 
     
     
@@ -166,6 +182,7 @@ if (!function_exists('theme_settings_page')) {
 	            do_settings_sections("theme-options");      
 	            do_settings_sections("opcoes-gerais");      
 	            do_settings_sections("redes-sociais");      
+	            do_settings_sections("menu-idiomas");      
 	            submit_button(); 
 	        ?>          
 	    </form>
