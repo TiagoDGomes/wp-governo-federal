@@ -52,110 +52,19 @@ if (!function_exists('idg_setup')) {
     }
 }
 
-function display_input_element($element, $description=''){ ?>
-    <input class="regular-text" type="text" name="<?= $element ?>" id="<?= $element ?>" value="<?php echo get_option($element); ?>" />
-    <?php if ($description != '') : ?>
-        <p class="description"><?= $description ?></p>
-    <?php endif; ?>
-<?php }
-
-function display_checkbox_element($element, $label, $description=''){ ?>
-    <input type="checkbox" name="<?= $element ?>" id="<?= $element ?>" <?= get_option($element) ? 'checked="checked"': '' ?> />
-    <label for="<?= $element ?>"><?= $label ?></label>
-    <?php if ($description != '') : ?>
-        <p class="description"><?= $description ?></p>
-    <?php endif; ?>
-<?php }
-
-function display_twitter_element(){ 
-    display_input_element('twitter_url');
-}
-
-function display_facebook_element(){  
-    display_input_element('facebook_url');
-}
-
-function display_youtube_element(){ 
-    display_input_element('youtube_url');
- }
-
-function display_gplus_element(){ 
-    display_input_element('gplus_url');
- }
-
-function display_instagram_element(){ 
-    display_input_element('instagram_url');
- }
-
-function display_tumblr_element(){ 
-    display_input_element('tumblr_url');
-  }
-
-function display_flickr_element(){ 
-    display_input_element('flickr_url');
-  }
-
-function display_soundcloud_element(){ 
-    display_input_element('soundcloud_url');
-  }
-
-  function display_slideshare_element(){ 
-    display_input_element('slideshare_url');
-  }
-
-function display_english_element(){ 
-    display_input_element('english_url', 'Endereço da ferramenta que irá traduzir o site para o inglês (ativa menu de idiomas)');
-}
-function display_spanish_element(){ 
-    display_input_element('spanish_url', 'Endereço da ferramenta que irá traduzir o site para o espanhol (ativa menu de idiomas)');
-}
-
-function display_denominacao(){ 
-    display_input_element('idg_denominacao');
-  }
-
-function display_titulo(){  
-    display_input_element('blogname');
-  }
-
-function display_subordinacao(){ 
-    display_input_element('blogdescription');
-  }
-function display_default_hat(){ 
-    display_input_element('default_hat');
- }
- function display_show_errors(){
-    display_checkbox_element('show_errors_max_char', 
-                            'Mostrar erros ao extrapolar limite de caracteres', 
-                            'Esta opção exibe aos administradores uma linha abaixo dos títulos ou subtítulos quando estes extrapolam os limites de caracteres do padrão IDG');
- }
- function display_ocultar_menu(){
-    display_checkbox_element('ocultar_menu', 'Não usar menu lateral');
- }
-
-
-function opcoes_de_tema(){?>
-    <select name="theme_color">
-        <option <?= get_option('theme_color') == 'branco' ? 'selected="selected"': '' ?> value="branco">Branco</option>
-        <option <?= get_option('theme_color') == 'verde' ? 'selected="selected"': '' ?> value="verde">Verde</option>
-        <option <?= get_option('theme_color') == 'amarelo' ? 'selected="selected"': '' ?> value="amarelo">Amarelo</option>
-        <option <?= get_option('theme_color') == 'azul' ? 'selected="selected"': '' ?> value="azul">Azul</option>
-    </select>		
-<?php }
-
 function display_theme_panel_fields(){
 	add_settings_section("section", "Opções de tema", null, "theme-options");
-    add_settings_field("ocultar_menu", "Menu", "display_ocultar_menu", "theme-options", "section");
-    add_settings_field("theme_color", "Cor", "opcoes_de_tema", "theme-options", "section");
+    add_settings_field("ocultar_menu", "Menu", "show_field_ocultar_menu", "theme-options", "section");
+    add_settings_field("theme_color", "Cor", "show_field_opcoes_de_tema", "theme-options", "section");
     register_setting("section", "theme_color");
     register_setting("section", "ocultar_menu");
 
     add_settings_section("section", "Opções gerais", null, "opcoes-gerais");
-	add_settings_field("idg_denominacao", "Denominação", "display_denominacao", "opcoes-gerais", "section");
-    add_settings_field("idg_titulo", "Título", "display_titulo", "opcoes-gerais", "section");
-    add_settings_field("idg_subordinacao", "Subordinação", "display_subordinacao", "opcoes-gerais", "section");
-    add_settings_field("default_hat", "Chapéu padrão", "display_default_hat", "opcoes-gerais", "section");    
-    add_settings_field("show_errors", "Erros", "display_show_errors", "opcoes-gerais", "section");    
+	add_settings_field("idg_denominacao", "Denominação", "show_field_denominacao", "opcoes-gerais", "section");
+    add_settings_field("idg_titulo", "Título", "show_field_titulo", "opcoes-gerais", "section");
+    add_settings_field("idg_subordinacao", "Subordinação", "show_field_subordinacao", "opcoes-gerais", "section");
+    add_settings_field("default_hat", "Chapéu padrão", "show_field_default_hat", "opcoes-gerais", "section");    
+    add_settings_field("show_errors", "Erros", "show_field_show_errors", "opcoes-gerais", "section");    
     register_setting("section", "idg_denominacao");
     register_setting("section", "blogname");
     register_setting("section", "blogdescription");    
@@ -163,15 +72,15 @@ function display_theme_panel_fields(){
     register_setting("section", "show_errors_max_char");
     
     add_settings_section("section", "Redes Sociais", null, "redes-sociais");
-	add_settings_field("twitter_url", "URL da página do Twitter", "display_twitter_element", "redes-sociais", "section");
-    add_settings_field("facebook_url", "URL da página do Facebook", "display_facebook_element", "redes-sociais", "section");    
-    add_settings_field("youtube_url", "URL da página do Youtube", "display_youtube_element", "redes-sociais", "section");    
-    add_settings_field("gplus_url", "URL da página do Google+", "display_gplus_element", "redes-sociais", "section");    
-    add_settings_field("instagram_url", "URL da página do Instagram", "display_instagram_element", "redes-sociais", "section");    
-    add_settings_field("tumblr_url", "URL da página do Tumblr", "display_tumblr_element", "redes-sociais", "section");    
-    add_settings_field("flickr_url", "URL da página do Flickr", "display_flickr_element", "redes-sociais", "section");    
-    add_settings_field("soundcloud_url", "URL da página do Soundcloud", "display_soundcloud_element", "redes-sociais", "section");    
-    add_settings_field("slideshare_url", "URL da página do Slideshare", "display_slideshare_element", "redes-sociais", "section");  
+	add_settings_field("twitter_url", "URL da página do Twitter", "show_field_twitter_element", "redes-sociais", "section");
+    add_settings_field("facebook_url", "URL da página do Facebook", "show_field_facebook_element", "redes-sociais", "section");    
+    add_settings_field("youtube_url", "URL da página do Youtube", "show_field_youtube_element", "redes-sociais", "section");    
+    add_settings_field("gplus_url", "URL da página do Google+", "show_field_gplus_element", "redes-sociais", "section");    
+    add_settings_field("instagram_url", "URL da página do Instagram", "show_field_instagram_element", "redes-sociais", "section");    
+    add_settings_field("tumblr_url", "URL da página do Tumblr", "show_field_tumblr_element", "redes-sociais", "section");    
+    add_settings_field("flickr_url", "URL da página do Flickr", "show_field_flickr_element", "redes-sociais", "section");    
+    add_settings_field("soundcloud_url", "URL da página do Soundcloud", "show_field_soundcloud_element", "redes-sociais", "section");    
+    add_settings_field("slideshare_url", "URL da página do Slideshare", "show_field_slideshare_element", "redes-sociais", "section");  
     
     register_setting("section", "twitter_url");
     register_setting("section", "facebook_url");
@@ -185,9 +94,9 @@ function display_theme_panel_fields(){
 
     
     add_settings_section("section", "Menu de idiomas", null, "menu-idiomas");	  
-    add_settings_field("english_url", "URL do link para Inglês", "display_english_element", "menu-idiomas", "section");   
+    add_settings_field("english_url", "URL do link para Inglês", "show_field_english_element", "menu-idiomas", "section");   
     register_setting("section", "english_url");
-    add_settings_field("spanish_url", "URL do link para Espanhol", "display_spanish_element", "menu-idiomas", "section");   
+    add_settings_field("spanish_url", "URL do link para Espanhol", "show_field_spanish_element", "menu-idiomas", "section");   
     register_setting("section", "spanish_url");
  
 
@@ -386,3 +295,4 @@ function idg_busca_opcao_checked($tipo, $c_id){
 
 
 include_once('widgets.php');
+include_once('functions-snippets.php');
