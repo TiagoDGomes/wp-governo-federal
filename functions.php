@@ -125,7 +125,9 @@ function display_default_hat(){
     display_input_element('default_hat');
  }
  function display_show_errors(){
-    display_checkbox_element('show_errors_max_char', 'Mostrar erros ao extrapolar limite de caracteres do padrão IDG (somente para administradores)');
+    display_checkbox_element('show_errors_max_char', 
+                            'Mostrar erros ao extrapolar limite de caracteres', 
+                            'Esta opção exibe aos administradores uma linha abaixo dos títulos ou subtítulos quando estes extrapolam os limites de caracteres do padrão IDG');
  }
  function display_ocultar_menu(){
     display_checkbox_element('ocultar_menu', 'Não usar menu lateral');

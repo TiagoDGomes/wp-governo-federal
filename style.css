@@ -17,7 +17,7 @@ Author URI: http://github.com/TiagoDGomes/wp-idg-theme
 .admin-bar .alerta-max-caracteres:not(:empty):after,
 .customize-partial-edit-shortcuts-shown .alerta-max-caracteres:not(:empty):after{
     -moz-text-blink: blink;
-    content: ' [alerta modo admin: excesso de caracteres] ';
+    content: ' [excesso de caracteres] ';
     vertical-align: sub;
     font-size: 12px;
     color: red;
