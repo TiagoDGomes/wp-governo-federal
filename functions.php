@@ -2,6 +2,9 @@
 /* WIDGETS */
 
 define('IDG_MAX_MENU_LATERAL_ESQUERDO', 9);
+define('IDG_MAX_NUM_CARACT_TITULO', 55);
+define('IDG_MAX_NUM_CARACT_SUBTITULO', 130);
+
 define('IDG_MAX_MENU_RODAPE', 4);
 
 add_action('after_setup_theme', 'idg_setup');
