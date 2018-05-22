@@ -11,6 +11,7 @@ add_action('after_setup_theme', 'idg_setup');
 
 if (!function_exists('idg_setup')) {
     function idg_setup() {
+        add_theme_support( 'title-tag' );
         register_nav_menu( 'idg-servicos', __( 'IDG - Menu "Serviços"', 'idg' ) );
         register_nav_menu( 'idg-em-destaque', __( 'IDG - Menu "Em destaque"', 'idg' ) );
         if (!get_option('ocultar_menu')){ 

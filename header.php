@@ -4,9 +4,12 @@
 <head>
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>
-        <?php wp_title(); ?>
-    </title>
+    <?php if ( ! function_exists( '_wp_render_title_tag' ) ) : ?>
+    <?php function theme_slug_render_title() {?>
+            <title><?php wp_title( '|', true, 'right' ); ?></title>
+    <?php } ?>
+    <?php add_action( 'wp_head', 'theme_slug_render_title' );?>
+    <?php endif; ?>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <link media="screen" rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/css/fonts.css">
