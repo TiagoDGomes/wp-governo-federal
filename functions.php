@@ -11,29 +11,30 @@ add_action('after_setup_theme', 'idg_setup');
 
 if (!function_exists('idg_setup')) {
     function idg_setup() {
-        register_nav_menu( 'idg-menu-de-relevancia', __( 'IDG - Menu de relevância', 'idg' ) );
-        //register_nav_menu( 'idg-redes-sociais', __( 'IDG - Menu "Redes Sociais"', 'idg' ) );
         register_nav_menu( 'idg-servicos', __( 'IDG - Menu "Serviços"', 'idg' ) );
         register_nav_menu( 'idg-em-destaque', __( 'IDG - Menu "Em destaque"', 'idg' ) );
-        register_nav_menu( 'idg-central-de-conteudos', __( 'IDG - Menu "Central de Conteúdos"', 'idg' ) );        
-        for ($i = 1; $i <= IDG_MAX_MENU_LATERAL_ESQUERDO; $i++){
-            register_nav_menu( "idg-menu-lateral-esquerdo-$i", __( "IDG - Menu lateral esquerdo $i", 'idg' ) );   
-        } 
-        for ($i = 1; $i <= IDG_MAX_MENU_RODAPE; $i++){
-            register_nav_menu( "idg-menu-rodape-$i", __( "IDG - Menu rodapé $i", 'idg' ) );   
-        }   
-        
-        
-        register_sidebar( array(
-            'name' => 'Menu lateral esquerdo personalizado',
-            'id' => 'menu-lateral-esquerdo',
-            'description' => __( 'Permite personalizar o menu lateral à esquerda do site', 'idg' ),
-		    'before_widget' => '<div id="%1$s" class="bloco widget %2$s">',
-            'after_widget' => '</div></div>',
-            'before_title' => '<div class="legenda">',
-            'after_title' => '</div><div>',
-        ) );
-
+        if (!get_option('ocultar_menu')){ 
+            register_nav_menu( 'idg-menu-de-relevancia', __( 'IDG - Menu de relevância', 'idg' ) );
+            //register_nav_menu( 'idg-redes-sociais', __( 'IDG - Menu "Redes Sociais"', 'idg' ) );
+            register_nav_menu( 'idg-central-de-conteudos', __( 'IDG - Menu "Central de Conteúdos"', 'idg' ) );        
+            for ($i = 1; $i <= IDG_MAX_MENU_LATERAL_ESQUERDO; $i++){
+                register_nav_menu( "idg-menu-lateral-esquerdo-$i", __( "IDG - Menu lateral esquerdo $i", 'idg' ) );   
+            } 
+            for ($i = 1; $i <= IDG_MAX_MENU_RODAPE; $i++){
+                register_nav_menu( "idg-menu-rodape-$i", __( "IDG - Menu rodapé $i", 'idg' ) );   
+            }   
+            
+            
+            register_sidebar( array(
+                'name' => 'Menu lateral esquerdo personalizado',
+                'id' => 'menu-lateral-esquerdo',
+                'description' => __( 'Permite personalizar o menu lateral à esquerda do site', 'idg' ),
+                'before_widget' => '<div id="%1$s" class="bloco widget %2$s">',
+                'after_widget' => '</div></div>',
+                'before_title' => '<div class="legenda">',
+                'after_title' => '</div><div>',
+            ) );
+        }
         register_sidebar( array(
             'name' => 'Miolo central',
             'id' => 'miolo-central-1',
@@ -51,13 +52,19 @@ if (!function_exists('idg_setup')) {
     }
 }
 
-function display_input_element($element){ ?>
+function display_input_element($element, $description=''){ ?>
     <input class="regular-text" type="text" name="<?= $element ?>" id="<?= $element ?>" value="<?php echo get_option($element); ?>" />
+    <?php if ($description != '') : ?>
+        <p class="description"><?= $description ?></p>
+    <?php endif; ?>
 <?php }
 
-function display_checkbox_element($element, $label){ ?>
-    <input type="checkbox" name="<?= $element ?>" id="<?= $element ?>" <?= get_option($element) ? 'checked="checked"': '' ?>" />
+function display_checkbox_element($element, $label, $description=''){ ?>
+    <input type="checkbox" name="<?= $element ?>" id="<?= $element ?>" <?= get_option($element) ? 'checked="checked"': '' ?> />
     <label for="<?= $element ?>"><?= $label ?></label>
+    <?php if ($description != '') : ?>
+        <p class="description"><?= $description ?></p>
+    <?php endif; ?>
 <?php }
 
 function display_twitter_element(){ 
@@ -97,10 +104,10 @@ function display_soundcloud_element(){
   }
 
 function display_english_element(){ 
-    display_input_element('english_url');
+    display_input_element('english_url', 'Endereço da ferramenta que irá traduzir o site para o inglês (ativa menu de idiomas)');
 }
 function display_spanish_element(){ 
-    display_input_element('spanish_url');
+    display_input_element('spanish_url', 'Endereço da ferramenta que irá traduzir o site para o espanhol (ativa menu de idiomas)');
 }
 
 function display_denominacao(){ 
@@ -120,6 +127,9 @@ function display_default_hat(){
  function display_show_errors(){
     display_checkbox_element('show_errors_max_char', 'Mostrar erros ao extrapolar limite de caracteres do padrão IDG (somente para administradores)');
  }
+ function display_ocultar_menu(){
+    display_checkbox_element('ocultar_menu', 'Não usar menu lateral');
+ }
 
 
 function opcoes_de_tema(){?>
@@ -133,8 +143,10 @@ function opcoes_de_tema(){?>
 
 function display_theme_panel_fields(){
 	add_settings_section("section", "Opções de tema", null, "theme-options");
+    add_settings_field("ocultar_menu", "Menu", "display_ocultar_menu", "theme-options", "section");
     add_settings_field("theme_color", "Cor", "opcoes_de_tema", "theme-options", "section");
     register_setting("section", "theme_color");
+    register_setting("section", "ocultar_menu");
 
     add_settings_section("section", "Opções gerais", null, "opcoes-gerais");
 	add_settings_field("idg_denominacao", "Denominação", "display_denominacao", "opcoes-gerais", "section");
@@ -210,27 +222,37 @@ function idg_body_class( $classes ) {
     
     $classes[] = get_option('theme_color');
     
-    $menus = get_nav_menu_locations();
     $contem_menu_lateral = false;
-
-    if (count( get_option('sidebars_widgets')['menu-lateral-esquerdo'] ) > 0){
-        $contem_menu_lateral = TRUE;
+    if (get_option('ocultar_menu')){
+        $classes[] = 'sem-menu';
     } else {
-        foreach ($menus as $menuname => $menuvalue){
-            $pos = strpos($menuname,'menu-lateral');
-            if ($pos !== FALSE && $menuvalue !==0){
-                $contem_menu_lateral = TRUE;
-                $classes[] = "x-${menuname}-p${pos}";
-                break;
+        if (count( get_option('sidebars_widgets')['menu-lateral-esquerdo'] ) > 0){
+            $contem_menu_lateral = TRUE;
+        } else {
+            $menus = get_nav_menu_locations();
+            foreach ($menus as $menuname => $menuvalue){
+                if ($menuvalue > 0){
+                    $is_menu_lateral = ! (strpos($menuname,'menu-lateral') === FALSE && 
+                            strpos($menuname,'menu-de-relevancia') === FALSE && 
+                            strpos($menuname,'central-de-conteudo') === FALSE);
+                    if ($is_menu_lateral){
+                        $contem_menu_lateral = TRUE;
+                        $classes[] = "check::m:${menuname}-v:${menuvalue}" ;  
+                        break;
+                    } else {
+                        $classes[] = "m:${menuname}-v:${menuvalue}" ;                       
+                    }           
+                } 
             }
+        }       
+        if ($contem_menu_lateral){
+            $classes[] = 'com-menu';
+        } else {
+            $classes[] = 'sem-menu';
         }
     }
-   
-    if ($contem_menu_lateral){
-        $classes[] = 'com-menu';
-    } else {
-        $classes[] = 'sem-menu';
-    }
+
+
     return $classes;
 }
 
