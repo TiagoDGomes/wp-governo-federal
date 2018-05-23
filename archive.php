@@ -22,7 +22,7 @@
     </h2>
 
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <?php include 'content.php'?>
+        <?php include __DIR__. '/content.php'?>
         <?php endwhile?>
         <?php else: ?>
         <div class="artigo">

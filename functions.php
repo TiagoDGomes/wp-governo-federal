@@ -302,5 +302,5 @@ function idg_busca_opcao_checked($tipo, $c_id){
 
 
 
-include_once('widgets.php');
-include_once('functions-snippets.php');
+include_once(__DIR__. '/widgets.php');
+include_once(__DIR__. '/functions-snippets.php');
