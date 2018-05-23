@@ -88,14 +88,18 @@ class IDG_Widget_Manchetes extends WP_Widget {
 
     public function update( $new_instance, $old_instance ) {
         $instance = $old_instance;
+        $instance['title'] = sanitize_text_field( $new_instance['title'] );
         $instance['url_bottom'] = sanitize_text_field( $new_instance['url_bottom'] );
         $instance['url_text_bottom'] = sanitize_text_field( $new_instance['url_text_bottom'] );
         return $instance;
     }
 
 	function form( $instance ) {
+        $title = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
         $url_bottom = isset( $instance['url_bottom'] ) ? esc_attr( $instance['url_bottom'] ) : '';
         $url_text_bottom = isset( $instance['url_text_bottom'] ) ? esc_attr( $instance['url_text_bottom'] ) : '';?>
+        <p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Título' ); ?></label>
+        <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
         <p><label for="<?php echo $this->get_field_id( 'url_bottom' ); ?>"><?php _e( 'URL de rodapé (opcional):' ); ?></label>
         <input class="widefat" id="<?php echo $this->get_field_id( 'url_bottom' ); ?>" name="<?php echo $this->get_field_name( 'url_bottom' ); ?>" type="text" value="<?php echo $url_bottom; ?>" /></p>
         <p><label for="<?php echo $this->get_field_id( 'url_text_bottom' ); ?>"><?php _e( 'Texto da URL de rodapé (opcional):' ); ?></label>
