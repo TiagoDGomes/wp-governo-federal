@@ -195,12 +195,26 @@
             </div>
             <div id="barra-brasil"></div>
             <div id="barra-breadcrumb">
-                <span class="legenda screen-reader-text">Localização da página</span>
-                <span id="breadcrumbs-you-are-here">Você está aqui:</span>
-                <span id="breadcrumbs-home">
-                    <a href="<?= home_url() ?>">Página Inicial</a>
-                </span>
+                <?php $navxt =  function_exists('bcn_display'); ?>
+                <?php $yoast =  function_exists('yoast_breadcrumb'); ?>
+                <?php $idg_breadcrumb =  function_exists('show_idg_breadcrumb'); ?>
+
+                <?php if ($navxt || $yoast || $idg_breadcrumb) : ?>
+                    <span class="legenda screen-reader-text">Localização da página</span>
+                    <span id="breadcrumbs-you-are-here">Você está aqui:</span>
+
+                    <?php if ($navxt) : ?>
+                        <?php bcn_display(); ?> 
+                    <?php elseif ($yoast) : ?>
+                        <?php yoast_breadcrumb('<span>',' </span>');?> 
+                    <?php elseif ($idg_breadcrumb) : ?>         
+                        <?php show_idg_breadcrumb(); ?>                                  
+                    <?php endif; ?>
+                <?php else: ?>
+                    &nbsp;   
+                <?php endif; ?>
             </div>
+            
         </header>
         <div id="menu-em-destaque" style="display: none">
             <?php idg_build_menu('idg-em-destaque'); ?>
