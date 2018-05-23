@@ -1,6 +1,9 @@
 <?php
-function show_field_input_element($element, $description=''){ ?>
-    <input class="regular-text" type="text" name="<?= $element ?>" id="<?= $element ?>" value="<?php echo get_option($element); ?>" />
+function show_field_input_element($element, $subelement=NULL, $description=''){ ?>
+    <?php @$value = $subelement ? get_option($element)[$subelement] : get_option($element); ?>
+    <?php @$name = $subelement ? "${element}[${subelement}]" : $element; ?>
+    <?php @$id = $subelement ? $subelement : $element; ?>
+    <input class="regular-text" type="text" name="<?= $name ?>" id="<?= $id ?>" value="<?= $value ?>" />
     <?php if ($description != '') : ?>
         <p class="description"><?= $description ?></p>
     <?php endif; ?>
@@ -15,23 +18,23 @@ function show_field_checkbox_element($element, $label, $description=''){ ?>
 <?php }
 
 function show_field_twitter_element(){ 
-    show_field_input_element('twitter_url');
+    show_field_input_element('wpseo_social','twitter_site');
 }
 
 function show_field_facebook_element(){  
-    show_field_input_element('facebook_url');
+    show_field_input_element('wpseo_social','facebook_site');
 }
 
 function show_field_youtube_element(){ 
-    show_field_input_element('youtube_url');
+    show_field_input_element('wpseo_social','youtube_url');
  }
 
 function show_field_gplus_element(){ 
-    show_field_input_element('gplus_url');
+    show_field_input_element('wpseo_social','google_plus_url');
  }
 
 function show_field_instagram_element(){ 
-    show_field_input_element('instagram_url');
+    show_field_input_element('wpseo_social','instagram_url');
  }
 
 function show_field_tumblr_element(){ 
@@ -51,10 +54,10 @@ function show_field_soundcloud_element(){
   }
 
 function show_field_english_element(){ 
-    show_field_input_element('english_url', 'Endereço da ferramenta que irá traduzir o site para o inglês (ativa menu de idiomas)');
+    show_field_input_element('english_url',NULL, 'Endereço da ferramenta que irá traduzir o site para o inglês (ativa menu de idiomas)');
 }
 function show_field_spanish_element(){ 
-    show_field_input_element('spanish_url', 'Endereço da ferramenta que irá traduzir o site para o espanhol (ativa menu de idiomas)');
+    show_field_input_element('spanish_url',NULL, 'Endereço da ferramenta que irá traduzir o site para o espanhol (ativa menu de idiomas)');
 }
 
 function show_field_denominacao(){ 
