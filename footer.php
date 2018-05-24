@@ -17,14 +17,14 @@
                     <?php for ($i = 1; $i <= IDG_MAX_MENU_RODAPE; $i++) : ?>
                         <?php $menu = idg_get_menu("idg-menu-rodape-$i"); ?>                    
                         <?php if (is_array($menu) || is_object($menu)) :?>
-                        <dl class="celula">
-                            <dt class="menu-bloco">
+                        <div class="celula">
+                            <div class="legenda">
                                 <?= $menu->name; ?>
-                            </dt>
-                            <dd>
-                                <?php idg_build_menu("idg-menu-rodape-$i"); ?> 
-                            </dd>
-                        </dl>
+                            </div>
+                            
+                            <?php idg_build_menu("idg-menu-rodape-$i"); ?> 
+                            
+                        </div>
                         <?php endif; ?>  
                     <?php endfor; ?> 
                 </div>            
