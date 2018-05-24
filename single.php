@@ -20,27 +20,28 @@
 				<?php endif;?>
 
 			</div>
-
+			
 			<div class="informacoes">
-
+				<?php if (get_post_type() == 'post'): ?>
 				<div class="screen-reader-text">Informações sobre o artigo:</div>
 				
-				<dl class="info">
-					<dt class="autor">por</dt>
-					<dd class="autor"><?php the_author()?></dd>
-					<dt class="data">Publicado:</dt>
-					<dd class="data">
-						<time datetime="<?php the_time('Y-m-d H:i')?>">
-						<?php the_time('d \d\e F \d\e Y\, H\hi\m\i\n.')?>
-						</time>
-					</dd>
-					<dt class="data">Última modificação:</dt>
-					<dd class="data">
-						<time datetime="<?php the_modified_time('Y-m-d H:i')?>">
-						<?php the_modified_time('d \d\e F \d\e Y\, H\hi\m\i\n.')?>
-						</time>
-					</dd>
-				</dl>
+					<dl class="info">
+						<dt class="autor">por</dt>
+						<dd class="autor"><?php the_author()?></dd>
+						<dt class="data">Publicado:</dt>
+						<dd class="data">
+							<time datetime="<?php the_time('Y-m-d H:i')?>">
+							<?php the_time('d \d\e F \d\e Y\, H\hi\m\i\n.')?>
+							</time>
+						</dd>
+						<dt class="data">Última modificação:</dt>
+						<dd class="data">
+							<time datetime="<?php the_modified_time('Y-m-d H:i')?>">
+							<?php the_modified_time('d \d\e F \d\e Y\, H\hi\m\i\n.')?>
+							</time>
+						</dd>
+					</dl>
+				
 				
 				<ul class="redes-sociais reacao">
 					<li class="twitter">
@@ -55,7 +56,7 @@
 					</li>
 					<li class="googleplus">G+</li>
 				</ul>
-				
+				<?php endif; ?>
 			</div>
 			<div class="conteudo_noticia">
 
@@ -64,16 +65,19 @@
 			</div>
 
 			<div class="main-rodape">
-			    <?php if (get_the_tags()): ?>
-				<div class="tags">
-					<div class="legenda">Tópicos:</div>
-					<?php the_tags( '<ul><li>', '</li><li>', '</li></ul>' ); ?>
-				</div>
+				<?php if (get_post_type() == 'post'): ?>
+					<?php if (get_the_tags()): ?>
+					<div class="tags">
+						<div class="legenda">Tópicos:</div>
+						<?php the_tags( '<ul><li>', '</li><li>', '</li></ul>' ); ?>
+					</div>
+					<?php endif; ?>
+					
+					<div class="categorias">
+						<div class="legenda">Assuntos:</div>
+						<?php the_category();?>
+					</div>
 				<?php endif; ?>
-				<div class="categorias">
-					<div class="legenda">Assuntos:</div>
-					<?php the_category();?>
-				</div>
 			</div>
 			
 		<?php endwhile;else: ?>
