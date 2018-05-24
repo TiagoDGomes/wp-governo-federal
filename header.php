@@ -101,7 +101,7 @@
                                 <a onclick="window.acessibilidade.altoContraste.alternar();return false;" href="#">Alto contraste</a>
                             </li>
                             <li>
-                                <a href="#">Mapa do site</a>
+                                <a href="<?= site_url() ?>/?pagina-especial=mapa-do-site">Mapa do site</a>
                             </li>
                         </ul>
                     </div>

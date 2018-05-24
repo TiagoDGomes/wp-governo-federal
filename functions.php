@@ -46,6 +46,16 @@ if (!function_exists('idg_setup')) {
             'after_title' => '</div><div class="chapeu"></div>',
         ) );
 
+        register_sidebar( array(
+            'name' => 'Mapa do site',
+            'id' => 'mapa-do-site-1',
+            'description' => __( 'Área da página de mapa do site', 'idg' )	,
+            'before_widget' => '<div class="widget %2$s">',
+            'after_widget' => '</div>',
+            'before_title' => '<h3>',
+            'after_title' => '</h3>',	    
+        ) );
+
         
         add_action("admin_menu", "add_theme_menu_item"); 
         add_action("admin_init", "display_theme_panel_fields");
