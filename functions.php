@@ -37,7 +37,7 @@ if (!function_exists('idg_setup')) {
             ) );
         }
         register_sidebar( array(
-            'name' => 'Widgets do miolo central',
+            'name' => 'Widgets da página inicial',
             'id' => 'miolo-central-1',
             'description' => __( 'Primeira posição da área principal do site', 'idg' ),
 		    'before_widget' => '<div class="bloco manchetes widget %2$s">',
@@ -65,7 +65,25 @@ if (!function_exists('idg_setup')) {
             'before_title' => '<div class="legenda screen-reader-text">',
             'after_title' => '</div>',	    
         ) );
-
+        $registered_sidebars = get_option( 'sidebars_widgets', array() );
+        foreach($registered_sidebars as $sidebar_id => $widgets){
+            if (is_array($widgets)){
+                foreach($widgets as $widget_id){  
+                    if ( strpos($widget_id, 'idg_wg_bloco_celulas') !== false ){
+                        register_sidebar( array(
+                            'name' => "Widgets de linha: $widget_id",
+                            'id' => "$sidebar_id-$widget_id",
+                            'description' => __( 'Menu personalizado de bloco', 'idg' )	,   
+                            'before_widget' => '<div class="bloco celula %2$s">',
+                            'after_widget' => '</div>',
+                            'before_title' => '<div class="legenda">',
+                            'after_title' => '</div>',                     
+                        ) );     
+                    }      
+                }
+            }                
+            
+        } 
         
         add_action("admin_menu", "add_theme_menu_item"); 
         add_action("admin_init", "display_theme_panel_fields");
