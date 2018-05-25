@@ -27,7 +27,7 @@ if (!function_exists('idg_setup')) {
             
             
             register_sidebar( array(
-                'name' => 'Menu lateral esquerdo personalizado',
+                'name' => 'Widgets do menu lateral esquerdo',
                 'id' => 'menu-lateral-esquerdo',
                 'description' => __( 'Permite personalizar o menu lateral à esquerda do site', 'idg' ),
                 'before_widget' => '<div id="%1$s" class="bloco widget %2$s">',
@@ -37,7 +37,7 @@ if (!function_exists('idg_setup')) {
             ) );
         }
         register_sidebar( array(
-            'name' => 'Miolo central',
+            'name' => 'Widgets do miolo central',
             'id' => 'miolo-central-1',
             'description' => __( 'Primeira posição da área principal do site', 'idg' ),
 		    'before_widget' => '<div class="bloco manchetes widget %2$s">',
@@ -47,13 +47,23 @@ if (!function_exists('idg_setup')) {
         ) );
 
         register_sidebar( array(
-            'name' => 'Mapa do site',
+            'name' => 'Widgets do mapa do site',
             'id' => 'mapa-do-site-1',
             'description' => __( 'Área da página de mapa do site', 'idg' )	,
             'before_widget' => '<div class="widget %2$s">',
             'after_widget' => '</div>',
             'before_title' => '<h3>',
             'after_title' => '</h3>',	    
+        ) );
+
+        register_sidebar( array(
+            'name' => 'Widgets do menu de rodapé',
+            'id' => 'menu-rodape-1',
+            'description' => __( 'Menu personalizado do rodapé', 'idg' )	,
+            'before_widget' => '<div class="widget %2$s">',
+            'after_widget' => '</div>',
+            'before_title' => '<div class="legenda screen-reader-text">',
+            'after_title' => '</div>',	    
         ) );
 
         

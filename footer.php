@@ -27,7 +27,10 @@
                         </div>
                         <?php endif; ?>  
                     <?php endfor; ?> 
-                </div>            
+                </div> 
+                <div class="linha">                  
+	                <?php dynamic_sidebar( 'menu-rodape-1' ); ?>         
+                </div> 
             </div> 
             <div id="footer-brasil"></div>
             <div id="extra-footer">
