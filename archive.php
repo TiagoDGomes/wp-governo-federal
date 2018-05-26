@@ -6,9 +6,9 @@
     <?php /* If this is a category archive */ if (is_category()) { ?>
         <?php echo single_cat_title(); ?>
     <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
-        Publicações de <?php the_time('j de F de Y'); ?>
+        Publicações de <?php the_time('j \d\e F \d\e Y'); ?>
     <?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
-        Publicações de <?php the_time('F de Y'); ?>
+        Publicações de <?php the_time('F \d\e Y'); ?>
     <?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
         Publicações de <?php the_time('Y'); ?>
     <?php /* If this is an author archive */ } elseif (is_author()) { ?>
