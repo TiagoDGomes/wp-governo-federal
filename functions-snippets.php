@@ -18,23 +18,23 @@ function show_field_checkbox_element($element, $label, $description=''){ ?>
 <?php }
 
 function show_field_twitter_element(){ 
-    show_field_input_element('wpseo_social','twitter_site');
+    show_field_input_element('twitter_site');
 }
 
 function show_field_facebook_element(){  
-    show_field_input_element('wpseo_social','facebook_site');
+    show_field_input_element('facebook_site');
 }
 
 function show_field_youtube_element(){ 
-    show_field_input_element('wpseo_social','youtube_url');
+    show_field_input_element('youtube_site');
  }
 
 function show_field_gplus_element(){ 
-    show_field_input_element('wpseo_social','google_plus_url');
+    show_field_input_element('google_plus_url');
  }
 
 function show_field_instagram_element(){ 
-    show_field_input_element('wpseo_social','instagram_url');
+    show_field_input_element('instagram_url');
  }
 
 function show_field_tumblr_element(){ 

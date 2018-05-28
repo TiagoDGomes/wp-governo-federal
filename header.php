@@ -128,21 +128,21 @@
                     <div id="barra-redes-sociais">
                         <div class="legenda screen-reader-text">Menu de redes sociais</div>
                         <ul>
-                            <?php if(get_option('youtube_url')):?>
+                            <?php if(get_option('youtube_site')):?>
                             <li class="youtube">
-                                <a href="<?= get_option('youtube_url') ?>">YouTube</a>
+                                <a href="<?= get_option('youtube_site') ?>">YouTube</a>
                             </li>
                             <?php endif; ?>
 
-                            <?php if(get_option('facebook_url')):?>
+                            <?php if(get_option('facebook_site')):?>
                             <li class="facebook">
-                                <a href="<?= get_option('facebook_url') ?>">Facebook</a>
+                                <a href="<?= get_option('facebook_site') ?>">Facebook</a>
                             </li>
                             <?php endif; ?>
 
-                            <?php if(get_option('gplus_url')):?>
+                            <?php if(get_option('google_plus_url')):?>
                             <li class="googleplus">
-                                <a href="<?= get_option('gplus_url') ?>">Google+</a>
+                                <a href="<?= get_option('google_plus_url') ?>">Google+</a>
                             </li>
                             <?php endif; ?>
 
@@ -158,9 +158,9 @@
                             </li>
                             <?php endif; ?>
 
-                            <?php if(get_option('twitter_url')):?>
+                            <?php if(get_option('twitter_site')):?>
                             <li class="twitter">
-                                <a href="<?= get_option('twitter_url') ?>">Twitter</a>
+                                <a href="<?= get_option('twitter_site') ?>">Twitter</a>
                             </li>
                             <?php endif; ?>
 

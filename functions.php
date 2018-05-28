@@ -129,13 +129,13 @@ function display_theme_panel_fields(){
  
     register_setting("section", "wpseo_social","idg_validate_wpseo_social");
     
-    /*   
+       
     register_setting("section", "twitter_site");
     register_setting("section", "facebook_site");
-    register_setting("section", "youtube_url");
+    register_setting("section", "youtube_site");
     register_setting("section", "google_plus_url");
     register_setting("section", "instagram_url");
-    */
+    
     register_setting("section", "tumblr_url");
     register_setting("section", "flickr_url");
     register_setting("section", "soundcloud_url");
