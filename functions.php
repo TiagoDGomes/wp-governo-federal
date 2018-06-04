@@ -298,11 +298,11 @@ function idg_default_search ( $query ) {
       
         $data_inicial = idg_busca_data_enviada('s_di');
         if ($data_inicial){
-            $date_query['after'] = $data_inicial;
+            $date_query['after'] = $data_inicial  . ' 00:00';
         }
         $data_final = idg_busca_data_enviada('s_df');
         if ($data_final){
-            $date_query['before'] = $data_final;
+            $date_query['before'] = $data_final  . ' 00:00 +1 day';
         }
         if (count($date_query)>0){
             $query->set('date_query', $date_query);
