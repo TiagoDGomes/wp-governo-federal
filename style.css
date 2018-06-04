@@ -25,3 +25,11 @@ Author URI: http://github.com/TiagoDGomes/wp-idg-theme
     letter-spacing: 0.075em;
 
 }
+.conteudo_noticia img.alignleft {
+    float: left;
+    margin-right: 1em;
+}
+.conteudo_noticia img.alignright {
+    float: right;
+    margin-left: 1em;
+}
