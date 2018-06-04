@@ -52,14 +52,20 @@ class IDG_Widget_Manchetes extends WP_Widget {
                                         <?php the_title(); ?>
                                     <?php endif; ?> 
                                 </a>
-                            </h2>                            
-                            <?php if (has_excerpt()): ?>             
-                                <?php if ( current_user_can( 'administrator' ) && get_option('show_errors_max_char')): ?>
-                                    <span><?= mb_substr(get_the_excerpt(), 0, IDG_MAX_NUM_CARACT_SUBTITULO) ;?></span><span class="alerta-max-caracteres"><?= mb_substr(get_the_excerpt(), IDG_MAX_NUM_CARACT_SUBTITULO) ;?></span>
-                                <?php else: ?>
-                                    <?php the_excerpt(); ?>
-                                <?php endif; ?>
-                            <?php endif;?>                           
+                            </h2> 
+                            <?php if (has_excerpt()){
+                                $content = strip_tags(get_the_excerpt());
+                            } else {
+                                $content = strip_tags(get_the_content('')); 
+                            } 
+                            ?>      
+                            <?php if ( current_user_can( 'administrator' ) && get_option('show_errors_max_char')): ?>
+                                <span><?= mb_substr($content, 0, IDG_MAX_NUM_CARACT_SUBTITULO) ;?></span><span class="alerta-max-caracteres"><?= mb_substr($content, IDG_MAX_NUM_CARACT_SUBTITULO) ;?></span>
+                            <?php else: ?>
+                                <?= $content; ?>
+                            <?php endif; ?>
+
+                                            
                         </div>
                 <?php if ($primeira || $fim_tres )  : ?>
                     </div><!-- fim .linha -->
