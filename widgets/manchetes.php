@@ -40,7 +40,7 @@ class IDG_Widget_Manchetes extends WP_Widget {
                     <!-- inicio .linha -->
                     <div class="linha<?= $comeco_tres ? ' tamanho-3' : '' ?>">                    
                 <?php endif ?>     
-                        <div class="noticia<?= $primeira ? ' grande': '' ?> celula">
+                        <div class="noticia<?= $primeira ? ' grande': '' ?> celula <?= strpos(get_the_content(''),'<img ') === FALSE ? '': 'com-imagem' ?>">
                             <div class="chapeu">
                                 <?= get_post_meta(get_the_ID(), 'Chapéu', true);?>
                             </div>
@@ -56,7 +56,7 @@ class IDG_Widget_Manchetes extends WP_Widget {
                             <?php if (has_excerpt()){
                                 $content = strip_tags(get_the_excerpt());
                             } else {
-                                $content = strip_tags(get_the_content('')); 
+                                $content = (get_the_content('')); 
                             } 
                             ?>      
                             <?php if ( current_user_can( 'administrator' ) && get_option('show_errors_max_char')): ?>

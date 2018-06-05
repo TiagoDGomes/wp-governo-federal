@@ -25,11 +25,26 @@ Author URI: http://github.com/TiagoDGomes/wp-idg-theme
     letter-spacing: 0.075em;
 
 }
-.conteudo_noticia img.alignleft {
+img.alignleft {
     float: left;
     margin-right: 1em;
 }
-.conteudo_noticia img.alignright {
+img.alignright {
     float: right;
     margin-left: 1em;
+}
+.manchetes img.alignleft ,
+.manchetes img.alignright{
+    /*position: relative;
+    top: -90px;*/
+}
+
+/* mover para template */
+.manchetes .noticia {
+    overflow: hidden;
+}
+@media screen and (min-width:760px){
+    .manchete .noticia.grande.com-imagem h2{
+        /*padding-left: 120px;*/
+    } 
 }
