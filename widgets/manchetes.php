@@ -39,8 +39,29 @@ class IDG_Widget_Manchetes extends WP_Widget {
                 <?php if ($primeira || $comeco_tres )  : ?>
                     <!-- inicio .linha -->
                     <div class="linha<?= $comeco_tres ? ' tamanho-3' : '' ?>">                    
-                <?php endif ?>     
-                        <div class="noticia<?= $primeira ? ' grande': '' ?> celula <?= strpos(get_the_content(''),'<img ') === FALSE ? '': 'com-imagem' ?>">
+                <?php endif ?> 
+                        <?php 
+                            if (has_excerpt()){
+                                $content = strip_tags(get_the_excerpt());
+                            } else {
+                                $content = (get_the_content('')); 
+                            } 
+                            $class_noticia = 'celula noticia';
+                            if (strpos($content,'<img ') !== FALSE){
+                                $class_noticia .= ' com-imagem';
+                            }
+                            if (strpos($content,' alignleft') !== FALSE){
+                                $class_noticia .= ' imagem-a-esquerda';
+                            } else if (strpos($content,' alignright') !== FALSE){
+                                $class_noticia .= ' imagem-a-direita';
+                            } else if (strpos($content,' aligncenter') !== FALSE){
+                                $class_noticia .= ' imagem-ao-centro';
+                            }
+                            if ($primeira){
+                                $class_noticia .= ' grande';
+                            }
+                        ?>    
+                        <div class="<?= $class_noticia ?>">
                             <div class="chapeu">
                                 <?= get_post_meta(get_the_ID(), 'Chapéu', true);?>
                             </div>
@@ -53,12 +74,6 @@ class IDG_Widget_Manchetes extends WP_Widget {
                                     <?php endif; ?> 
                                 </a>
                             </h2> 
-                            <?php if (has_excerpt()){
-                                $content = strip_tags(get_the_excerpt());
-                            } else {
-                                $content = (get_the_content('')); 
-                            } 
-                            ?>      
                             <?php if ( current_user_can( 'administrator' ) && get_option('show_errors_max_char')): ?>
                                 <span><?= mb_substr($content, 0, IDG_MAX_NUM_CARACT_SUBTITULO) ;?></span><span class="alerta-max-caracteres"><?= mb_substr($content, IDG_MAX_NUM_CARACT_SUBTITULO) ;?></span>
                             <?php else: ?>
