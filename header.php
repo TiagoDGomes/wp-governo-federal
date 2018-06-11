@@ -95,7 +95,7 @@
                         <div class="legenda screen-reader-text">Menu de acessibilidade</div>
                         <ul>
                             <li>
-                                <a href="#">Acessibilidade</a>
+                                <a href="<?= site_url() ?>/?pagina-especial=acessibilidade">Acessibilidade</a>
                             </li>
                             <li class="js-necessario">
                                 <a onclick="window.acessibilidade.altoContraste.alternar();return false;" href="#">Alto contraste</a>
