@@ -1,6 +1,8 @@
-<?php if ($_GET["pagina-especial"] == 'mapa-do-site'): ?>
+<?php $paginas_especiais = array('mapa-do-site', 'acessibilidade'); ?>
 
-    <?php include __DIR__ . '/page-mapa-do-site.php' ?>
+<?php if (in_array ($_GET["pagina-especial"] , $paginas_especiais)): ?>
+
+    <?php include __DIR__ . "/page-" . $_GET['pagina-especial'] . ".php" ?>
 
 <?php else : ?>
 	<?php get_header(); ?>
