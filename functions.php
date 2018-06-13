@@ -31,9 +31,9 @@ if (!function_exists('idg_setup')) {
                 'id' => 'menu-lateral-esquerdo',
                 'description' => __( 'Permite personalizar o menu lateral à esquerda do site', 'idg' ),
                 'before_widget' => '<div id="%1$s" class="bloco widget %2$s">',
-                'after_widget' => '</div></div>',
+                'after_widget' => '</div>',
                 'before_title' => '<div class="legenda">',
-                'after_title' => '</div><div>',
+                'after_title' => '</div>',
             ) );
         }
         register_sidebar( array(
