@@ -33,3 +33,6 @@ img.alignright {
     float: right;
     margin-left: 1em;
 }
+.menu-lateral-aberto .widget_media_image{
+    display: none;
+}

@@ -34,7 +34,8 @@
     <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
     <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); wp_head(); ?>
-
+    <script src="<?= get_template_directory_uri()  ?>/padraogoverno/resources/js/geral.js"></script>    
+    
 </head>
 
 <body <?php body_class( ); ?>>
@@ -194,28 +195,13 @@
                 <?php idg_build_menu('idg-servicos'); ?>
             </div>
             <div id="barra-brasil"></div>
-            <div id="barra-breadcrumb">
-                <?php $navxt =  function_exists('bcn_display'); ?>
-                <?php $yoast =  function_exists('yoast_breadcrumb'); ?>
-                <?php $idg_breadcrumb =  function_exists('show_idg_breadcrumb'); ?>
-
-                <?php if ($navxt || $yoast || $idg_breadcrumb) : ?>
-                    <span class="legenda screen-reader-text">Localização da página</span>
-                    <span id="breadcrumbs-you-are-here">Você está aqui:</span>
-
-                    <?php if ($navxt) : ?>
-                        <?php bcn_display(); ?> 
-                    <?php elseif ($yoast) : ?>
-                        <?php yoast_breadcrumb('<span>',' </span>');?> 
-                    <?php elseif ($idg_breadcrumb) : ?>         
-                        <?php show_idg_breadcrumb(); ?>                                  
-                    <?php endif; ?>
-                <?php else: ?>
-                    &nbsp;   
-                <?php endif; ?>
-            </div>
+            
             
         </header>
+        <div id="titulo-menu-retratil" class="js-necessario">
+            <a href="javascript:;" onclick="alternarMenuRetratil()"><span class="screen-reader-text">Ativar menu principal</span></a>
+        </div>
+
         <div id="menu-em-destaque" style="display: none">
             <?php idg_build_menu('idg-em-destaque'); ?>
         </div>
@@ -279,6 +265,26 @@
 
 
             </nav>
+            <div id="barra-breadcrumb">
+                <?php $navxt =  function_exists('bcn_display'); ?>
+                <?php $yoast =  function_exists('yoast_breadcrumb'); ?>
+                <?php $idg_breadcrumb =  function_exists('show_idg_breadcrumb'); ?>
+
+                <?php if ($navxt || $yoast || $idg_breadcrumb) : ?>
+                    <span class="legenda screen-reader-text">Localização da página</span>
+                    <span id="breadcrumbs-you-are-here">Você está aqui:</span>
+
+                    <?php if ($navxt) : ?>
+                        <?php bcn_display(); ?> 
+                    <?php elseif ($yoast) : ?>
+                        <?php yoast_breadcrumb('<span>',' </span>');?> 
+                    <?php elseif ($idg_breadcrumb) : ?>         
+                        <?php show_idg_breadcrumb(); ?>                                  
+                    <?php endif; ?>
+                <?php else: ?>
+                    &nbsp;   
+                <?php endif; ?>
+            </div>
             <div id="area-conteudo">
                 <main class="grid">
                     <a name="secao-conteudo" id="secao-conteudo" class="screen-reader-text"></a>
