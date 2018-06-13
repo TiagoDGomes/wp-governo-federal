@@ -223,6 +223,11 @@
         <div id="central">
             <nav id="menu-lateral">
                 <a name="secao-menu" id="secao-menu" class="screen-reader-text">Menu principal</a>
+
+                <?php if ( is_active_sidebar( 'menu-lateral-esquerdo-topo' ) ) : ?>
+                <?php dynamic_sidebar( 'menu-lateral-esquerdo-topo' ); ?>
+                <?php endif; ?>
+
                 <?php $menu_relevancia = idg_get_menu("idg-menu-de-relevancia"); ?>
                 <?php if($menu_relevancia !== FALSE) :?>
                 <div class="menu-relevancia">
@@ -249,9 +254,12 @@
                 <?php endif; ?>
                 <?php endfor; ?>
 
+
                 <?php if ( is_active_sidebar( 'menu-lateral-esquerdo' ) ) : ?>
                 <?php dynamic_sidebar( 'menu-lateral-esquerdo' ); ?>
                 <?php endif; ?>
+
+
                 <?php $menu_relevancia = idg_get_menu("idg-central-de-conteudos");?>
                 <?php if($menu_relevancia !== FALSE && $menu_relevancia !== NULL ) :?>
                 <div class="bloco centrais-de-conteudos">
@@ -263,6 +271,13 @@
                     
                 </div>
                 <?php endif; ?>
+
+
+                <?php if ( is_active_sidebar( 'menu-lateral-esquerdo-fim' ) ) : ?>
+                <?php dynamic_sidebar( 'menu-lateral-esquerdo-fim' ); ?>
+                <?php endif; ?>
+
+
             </nav>
             <div id="area-conteudo">
                 <main class="grid">

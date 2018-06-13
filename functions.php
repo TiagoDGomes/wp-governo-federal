@@ -25,16 +25,37 @@ if (!function_exists('idg_setup')) {
                 register_nav_menu( "idg-menu-rodape-$i", __( "IDG - Menu rodapé $i", 'idg' ) );   
             }   
             
-            
             register_sidebar( array(
-                'name' => 'Widgets do menu lateral esquerdo',
-                'id' => 'menu-lateral-esquerdo',
-                'description' => __( 'Permite personalizar o menu lateral à esquerda do site', 'idg' ),
+                'name' => 'Widgets do menu lateral esquerdo (topo)',
+                'id' => 'menu-lateral-esquerdo-topo',
+                'description' => __( 'Permite personalizar o menu lateral à esquerda do site (acima do menu padrão)', 'idg' ),
                 'before_widget' => '<div id="%1$s" class="bloco widget %2$s">',
                 'after_widget' => '</div>',
                 'before_title' => '<div class="legenda">',
                 'after_title' => '</div>',
             ) );
+            
+            register_sidebar( array(
+                'name' => 'Widgets do menu lateral esquerdo (meio)',
+                'id' => 'menu-lateral-esquerdo',
+                'description' => __( 'Permite personalizar o menu lateral à esquerda do site (entre o menu padrão e o menu "Centrais de conteúdo")', 'idg' ),
+                'before_widget' => '<div id="%1$s" class="bloco widget %2$s">',
+                'after_widget' => '</div>',
+                'before_title' => '<div class="legenda">',
+                'after_title' => '</div>',
+            ) );        
+            
+            register_sidebar( array(
+                'name' => 'Widgets do menu lateral esquerdo (fim)',
+                'id' => 'menu-lateral-esquerdo-fim',
+                'description' => __( 'Permite personalizar o menu lateral à esquerda do site (abaixo do menu padrão)', 'idg' ),
+                'before_widget' => '<div id="%1$s" class="bloco widget %2$s">',
+                'after_widget' => '</div>',
+                'before_title' => '<div class="legenda">',
+                'after_title' => '</div>',
+            ) );
+            
+            
         }
         register_sidebar( array(
             'name' => 'Widgets da página inicial',
