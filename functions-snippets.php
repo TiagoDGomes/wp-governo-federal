@@ -148,7 +148,10 @@ function show_field_opcoes_de_tema(){?>
         <option <?= get_option('theme_color') == 'verde' ? 'selected="selected"': '' ?> value="verde">Verde</option>
         <option <?= get_option('theme_color') == 'amarelo' ? 'selected="selected"': '' ?> value="amarelo">Amarelo</option>
         <option <?= get_option('theme_color') == 'azul' ? 'selected="selected"': '' ?> value="azul">Azul</option>
-    </select>		
+    </select>	
+    <p class="description">
+        Ao criar um site independente para planos ou programas, o gestor de conteúdo deve, obrigatoriamente, utilizar o tema branco. 
+    </p>	
 <?php }
 
 
