@@ -36,3 +36,14 @@ img.alignright {
 .menu-lateral-aberto .widget_media_image{
     display: none;
 }
+
+#barra-breadcrumb ul,
+#barra-breadcrumb li {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    display: inline;
+}
+#barra-breadcrumb a:after{
+    content: ' » '
+}

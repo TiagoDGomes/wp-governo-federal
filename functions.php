@@ -191,6 +191,30 @@ if (!function_exists('theme_settings_page')) {
 	<?php
     }
 }
+
+if (!function_exists('show_idg_breadcrumb')){
+    function show_idg_breadcrumb(){
+        global $post;
+        ?>
+        <?php if (is_single()): ?>     
+            <span class="legenda screen-reader-text">Localização da página</span>
+            <span id="breadcrumbs-you-are-here">Você está aqui:</span>   
+            <span class="legenda screen-reader-text">Primeiro nivel:</span>
+            <a title="Página inicial" href="<?= home_url() ?>">Página inicial</a> 
+            <span class="legenda screen-reader-text">Próximo nível: categoria é </span>
+            <?php foreach(get_the_category() as  $cat) : ?>
+            <?php //$cat = get_the_category()[0]; ?>
+            <a href="<?= get_category_link($cat->cat_ID) ?>"><?= $cat->name ?></a>
+            <?php endforeach ; ?>
+            <span class="legenda screen-reader-text">Próximo nível: nome da notícia é</span>
+            <?php the_title();?>
+        <?php endif; ?>
+        
+        <?php wp_reset_query(); ?>
+
+    <?php } 
+}
+
 if (!function_exists('add_theme_menu_item')) {
     function add_theme_menu_item(){
         add_menu_page("IDG Configurações", "IDG Configurações", "manage_options", "theme-panel", "theme_settings_page", null, 99);

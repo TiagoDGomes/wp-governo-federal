@@ -271,13 +271,14 @@
                 <?php $idg_breadcrumb =  function_exists('show_idg_breadcrumb'); ?>
 
                 <?php if ($navxt || $yoast || $idg_breadcrumb) : ?>
-                    <span class="legenda screen-reader-text">Localização da página</span>
-                    <span id="breadcrumbs-you-are-here">Você está aqui:</span>
-
                     <?php if ($navxt) : ?>
+                        <?php if ($breadcrumb_navxt !== null) : ?>
+                            <span class="legenda screen-reader-text">Localização da página</span>
+                            <span id="breadcrumbs-you-are-here">Você está aqui:</span>
+                        <?php endif; ?>
                         <?php bcn_display(); ?> 
                     <?php elseif ($yoast) : ?>
-                        <?php yoast_breadcrumb('<span>',' </span>');?> 
+                        <?php yoast_breadcrumb('<span class="legenda screen-reader-text">Localização da página</span><span id="breadcrumbs-you-are-here">Você está aqui:</span><span>',' </span>');?> 
                     <?php elseif ($idg_breadcrumb) : ?>         
                         <?php show_idg_breadcrumb(); ?>                                  
                     <?php endif; ?>
