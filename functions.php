@@ -16,7 +16,6 @@ if (!function_exists('idg_setup')) {
         register_nav_menu( 'idg-em-destaque', __( 'IDG - Menu "Em destaque"', 'idg' ) );
         if (!get_option('ocultar_menu')){ 
             register_nav_menu( 'idg-menu-de-relevancia', __( 'IDG - Menu de relevância', 'idg' ) );
-            //register_nav_menu( 'idg-redes-sociais', __( 'IDG - Menu "Redes Sociais"', 'idg' ) );
             register_nav_menu( 'idg-central-de-conteudos', __( 'IDG - Menu "Central de Conteúdos"', 'idg' ) );        
             for ($i = 1; $i <= IDG_MAX_MENU_LATERAL_ESQUERDO; $i++){
                 register_nav_menu( "idg-menu-lateral-esquerdo-$i", __( "IDG - Menu lateral esquerdo $i", 'idg' ) );   
@@ -182,7 +181,6 @@ if (!function_exists('theme_settings_page')) {
 	            do_settings_sections("theme-options");      
 	            do_settings_sections("opcoes-gerais");      
 	            do_settings_sections("menu-idiomas"); 
-	            //settings_fields("wpseo_social");
 	            do_settings_sections("redes-sociais");      
 	            submit_button(); 
 	        ?>          
@@ -201,11 +199,12 @@ if (!function_exists('show_idg_breadcrumb')){
             <span id="breadcrumbs-you-are-here">Você está aqui:</span>   
             <span class="legenda screen-reader-text">Primeiro nivel:</span>
             <a title="Página inicial" href="<?= home_url() ?>">Página inicial</a> 
+            
             <span class="legenda screen-reader-text">Próximo nível: categoria é </span>
-            <?php foreach(get_the_category() as  $cat) : ?>
-            <?php //$cat = get_the_category()[0]; ?>
-            <a href="<?= get_category_link($cat->cat_ID) ?>"><?= $cat->name ?></a>
+            <?php foreach(get_the_category() as $cat) : ?>
+                <a href="<?= get_category_link($cat->cat_ID) ?>"><?= $cat->name ?></a>
             <?php endforeach ; ?>
+            
             <span class="legenda screen-reader-text">Próximo nível: nome da notícia é</span>
             <?php the_title();?>
         <?php endif; ?>
