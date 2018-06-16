@@ -60,16 +60,74 @@ function show_field_spanish_element(){
     show_field_input_element('spanish_url',NULL, 'Endereço da ferramenta que irá traduzir o site para o espanhol (ativa menu de idiomas)');
 }
 
+function show_field_title($option){ 
+    $idg_n_checked = FALSE;
+    $idg_d_checked = FALSE;
+    $idg_v_checked = FALSE;
+    $idg_valor_atual = get_option($option);
+    if (get_option($option) == '{BLOG_NAME}' || ($option=='idg_titulo' && get_option($option) === FALSE)){
+        $idg_n_checked = TRUE;
+    } else if (get_option($option) == '{BLOG_DESCRIPTION}' || ($option=='idg_subordinacao' && get_option($option)===FALSE) ){
+        $idg_d_checked = TRUE;
+    } else {
+        $idg_v_checked = TRUE; 
+    }      
+    ?>
+    <div id="bloco_titulo_field_<?= $option ?>">
+        <p>
+            <input onclick="document.getElementById('<?= $option ?>_txt').style.display='none'" <?= $idg_n_checked ? 'checked="checked"': '' ?> id="<?= $option ?>_opt_bn" type="radio" name="<?= $option ?>_opt" value="{BLOG_NAME}">
+            <label for="<?= $option ?>_opt_bn">Utilizar o valor "título do site"</label>
+        </p>
+        <p>
+            <input onclick="document.getElementById('<?= $option ?>_txt').style.display='none'" <?= $idg_d_checked ? 'checked="checked"': '' ?> id="<?= $option ?>_opt_bd" type="radio" name="<?= $option ?>_opt" value="{BLOG_DESCRIPTION}">
+            <label for="<?= $option ?>_opt_bd">Utilizar o valor "descrição do site"</label>
+        </p>
+        <p>
+            <input onclick="document.getElementById('<?= $option ?>_txt').style.display='initial'" <?= $idg_v_checked ? 'checked="checked"': '' ?> id="<?= $option ?>_opt_txt" type="radio" name="<?= $option ?>_opt" value="">
+            <label for="<?= $option ?>_opt_txt">Utilizar um texto personalizado </label>       
+            <input placeholder="Digite um texto" <?= $idg_v_checked ? '': 'style="display:none"' ?>  class="regular-text" type="text" name="<?= $option ?>_txt" id="<?= $option ?>_txt" value="<?= idg_get_option_real($option) == get_option($option) ? get_option($option):'' ?>">
+        </p>
+        <p class="description">
+            <span>Valor a ser utilizado: </span>
+            <strong><span id="<?= $option ?>_result"><?= idg_get_option_real($option) ?></span></strong>
+            <input id="<?= $option ?>" type="hidden" name="<?= $option ?>" value="<?= get_option($option) ?>" >
+        </p>
+    </div>
+    <script>
+        function change_<?= $option ?> (v){
+            jQuery('#<?= $option ?>').val(v);  
+            jQuery('#<?= $option ?>_result').html(v);  
+        }
+        jQuery('#<?= $option ?>_opt_bn').click(function(){
+            var v = "<?= get_option('blogname') ?>";
+            jQuery('#<?= $option ?>').val('{BLOG_NAME}');  
+            jQuery('#<?= $option ?>_result').html(v);                    
+        })
+        jQuery('#<?= $option ?>_opt_bd').click(function(){
+            var v = "<?= get_option('blogdescription') ?>";
+            jQuery('#<?= $option ?>').val('{BLOG_DESCRIPTION}');  
+            jQuery('#<?= $option ?>_result').html(v);    
+        })
+        jQuery('#<?= $option ?>_opt_txt').click(function(){
+            var v = jQuery('#<?= $option ?>_txt').val();
+            change_<?= $option ?>(v);                      
+        })
+        jQuery('#<?= $option ?>_txt').keyup(function(){
+            var v = jQuery('#<?= $option ?>_txt').val();
+            change_<?= $option ?>(v);                      
+        })
+        
+    </script>
+<?php  }
 function show_field_denominacao(){ 
-    show_field_input_element('idg_denominacao');
-  }
-
+    show_field_title('idg_denominacao');
+}
 function show_field_titulo(){  
-    show_field_input_element('blogname');
+    show_field_title('idg_titulo');
   }
 
 function show_field_subordinacao(){ 
-    show_field_input_element('blogdescription');
+    show_field_title('idg_subordinacao');
   }
 function show_field_default_hat(){ 
     show_field_input_element('default_hat');

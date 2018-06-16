@@ -125,8 +125,8 @@ function display_theme_panel_fields(){
     add_settings_field("default_hat", "Chapéu padrão", "show_field_default_hat", "opcoes-gerais", "section");    
     add_settings_field("show_errors", "Erros", "show_field_show_errors", "opcoes-gerais", "section");    
     register_setting("section", "idg_denominacao");
-    register_setting("section", "blogname");
-    register_setting("section", "blogdescription");    
+    register_setting("section", "idg_titulo");
+    register_setting("section", "idg_subordinacao");    
     register_setting("section", "default_hat");   
     register_setting("section", "show_errors_max_char");
     
@@ -166,6 +166,27 @@ function display_theme_panel_fields(){
     
     
 }
+function idg_get_option_real($option){
+    if (get_option($option) == '{BLOG_NAME}' || ($option=='idg_titulo' && get_option($option)===FALSE)){
+        return get_option('blogname');
+    }
+    if (get_option($option) == '{BLOG_DESCRIPTION}' || ($option=='idg_subordinacao' && get_option($option)===FALSE)){
+        return get_option('blogdescription');
+    }
+    return get_option($option);
+}
+
+
+function idg_render_title(){
+    if ( ! function_exists( '_wp_render_title_tag' ) ) {
+        function theme_slug_render_title() {
+            ?><title><?php wp_title( '|', true, 'right' ); ?></title><?php 
+        }
+        add_action( 'wp_head', 'theme_slug_render_title' );
+    }
+}
+
+
 function idg_validate_wpseo_social($values ){
     return $values;
 }

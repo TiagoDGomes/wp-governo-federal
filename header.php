@@ -4,12 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <?php if ( ! function_exists( '_wp_render_title_tag' ) ) : ?>
-    <?php function theme_slug_render_title() {?>
-            <title><?php wp_title( '|', true, 'right' ); ?></title>
-    <?php } ?>
-    <?php add_action( 'wp_head', 'theme_slug_render_title' );?>
-    <?php endif; ?>
+    <?php idg_render_title(); ?>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <link media="screen" rel="stylesheet" type="text/css" href="<?= get_template_directory_uri()  ?>/padraogoverno/resources/css/fonts.css">
@@ -111,13 +106,13 @@
                     <div id="titulo">
                         <a href="<?= home_url() ?>">
                             <div class="denominacao">
-                                <?= get_option('idg_denominacao'); ?>
+                                <?= idg_get_option_real('idg_denominacao'); ?>
                             </div>
                             <h1>
-                                <?php bloginfo('name'); ?>
+                                <?= idg_get_option_real('idg_titulo'); ?>                                
                             </h1>
                             <div class="subordinacao">
-                                <?php bloginfo('description'); ?>
+                                <?= idg_get_option_real('idg_subordinacao'); ?>
                             </div>
                         </a>
                     </div>
