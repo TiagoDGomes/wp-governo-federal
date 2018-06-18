@@ -44,9 +44,11 @@
 				
 				
 				<ul class="redes-sociais reacao">
+
+
 					<li class="twitter">
 						<a class="twitter-share-button"
-							onclick="javascript:window.open(this.href,'_blank','menubar=no,height=300,width=500');return false;"
+							onclick="window.open(this.href,'_blank','menubar=no,height=300,width=500');return false;"
 							href="https://twitter.com/intent/tweet?text=<?= urlencode (get_the_title() );?>&amp;url=<?=  urlencode(get_permalink());?>">
 							Tweet 
 						</a>
@@ -54,7 +56,17 @@
 					<li class="facebook">
 						<iframe src="https://www.facebook.com/plugins/like.php?href=<?= urlencode (get_permalink());?>&amp;width=120&amp;layout=button&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=25&amp;appId=<?= get_option('facebook_app_id');?>" width="120" height="25" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 					</li>
-					<li class="googleplus">G+</li>
+					<li class="googleplus">
+						<a class="googleplus-share-button"
+							onclick="window.open(this.href,'_blank','menubar=no,height=600,width=400');return false;"
+							href="https://plus.google.com/share?url=<?=  urlencode(get_permalink());?>">
+							G+
+						</a> 
+					</li>
+
+
+
+
 				</ul>
 				<?php endif; ?>
 			</div>
