@@ -35,10 +35,18 @@ class IDG_Widget_Manchetes extends WP_Widget {
             <?php if( $title ) : ?>
                 <?php echo $before_title . $title . $after_title; ?>
             <?php endif; ?>
-            <?php while( $r->have_posts() ) : $r->the_post(); $count++; $primeira = ($count == 1); $comeco_tres = (($count+1) % 3 == 0); $fim_tres = (($count + 2) % 3 == 0); ?>
+            <?php while( $r->have_posts() ) :   ?>
+                <?php $r->the_post(); ?>
+                <?php $count++; ?>
+                <?php $primeira = ($count == 1); ?>
+                <?php $comeco_tres = (($count+1) % 3 == 0); ?>
+                <?php $fim_tres = (($count + 2) % 3 == 0); ?>
+                
                 <?php if ($primeira || $comeco_tres )  : ?>
+
                     <!-- inicio .linha -->
-                    <div class="linha<?= $comeco_tres ? ' tamanho-3' : '' ?>">                    
+                    <div class="linha<?= $comeco_tres ? ' tamanho-3' : '' ?>">   
+
                 <?php endif ?> 
                         <?php 
                             if (has_excerpt()){
@@ -83,9 +91,16 @@ class IDG_Widget_Manchetes extends WP_Widget {
                                             
                         </div>
                 <?php if ($primeira || $fim_tres )  : ?>
+
                     </div><!-- fim .linha -->
+
                 <?php endif; ?>                
             <?php endwhile; ?>
+            <?php if ($count <= 3 )  : ?>
+
+                    </div><!-- fim .linha (<= que 3)-->
+
+            <?php endif; ?>
             <!-- url de rodapé: <?= $instance['url_bottom'] ?> -->
             <?php if (( $instance['url_bottom'] ) ) : ?>
                 <div class="rodape">
