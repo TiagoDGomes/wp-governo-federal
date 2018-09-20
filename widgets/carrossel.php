@@ -36,6 +36,50 @@ class IDG_Widget_Carrossel extends WP_Widget
         <?php if ($title): ?>
             <?php echo $before_title . $title . $after_title; ?>
         <?php endif;?>
+
+        <div class="bloco carrossel">
+            <?php $car_id = 'carousel-' . rand(1000, 10000); ?>
+            <?php $transit = isset($instance['transit']) ? (int)(esc_attr($instance['transit'])) * 1000 : 30000; ?>   
+            <div id="<?=$car_id ?>" class="carousel">
+                <div class="slides">
+                    <?php for ($i = 1; $i < 10; $i++): ?>
+                    <?php if($instance["ativo_$i" ] == 'on') : ?>
+                    <div class="slide <?= $i==1 ? 'active':''?>">                        
+                        <?php if ($instance["url_$i"]): ?><a href="<?= $instance["url_$i"] ?>"><?php endif ; ?>
+                        <?php $image_id = $instance["image_id_$i"];
+                                $tag_img = "preview_$i";
+                                if (intval($image_id) > 0) {
+                                    $image = wp_get_attachment_image($image_id, 'medium', false, array('class' =>  "i_$tag_img"));
+                                } else {
+                                    $image = '';
+                                }
+                        ?>
+                        <?php echo($image) ?>
+                        <?php // var_dump($instance["image_id_$i"]); ?>
+                        <span class="text">
+                            <?= $instance["texto_$i"] ?>
+                        </span>
+                        <?php if ($instance["url_$i"]): ?></a><?php endif ; ?>
+                    </div>                  
+                    <?php endif; ?>
+                    <?php endfor;?>
+                    <ul class="indicators">
+                        <?php for ($i = 1; $i < 10; $i++): ?>
+                        <?php if($instance["ativo_$i" ] == 'on') : ?>
+                        <li <?= $i==1?'class="active"':''?> ><a href="javascript:;" data-slide="<?= $i ?>">&bullet; </a></li>          
+                        <?php endif; ?>
+                        <?php endfor;?>
+                    </ul>
+                </div>
+            </div>
+            <script>
+                c = new CarouselClass('#<?=$car_id ?>', <?= $transit ?>);
+                c.start();
+            </script>
+        </div>
+
+
+
         <?php echo $after_widget ?>
         <?php wp_reset_postdata();?>
 
@@ -82,13 +126,12 @@ class IDG_Widget_Carrossel extends WP_Widget
                     value="<?php echo $instance["image_id_$i"]; ?>" 
                     name="<?php echo $this->get_field_name("image_id_$i"); ?>" 
                     id="<?php echo $this->get_field_id("image_id_$i"); ?>" 
-                    type="hidden" 
+                    type="text" 
                     class="widefat"                         
                 />
                 </p>
                 <input type="button"
-                    onclick="choose_image('<?=$field_id;?>','<?= $tag_img ?>')"
-                    data-fieldid="<?=$field_id;?>"
+                    onclick="choose_image('<?php echo $this->get_field_id('image_id_'.$i); ?>','<?= $tag_img ?>')"
                     value="<?php esc_attr_e('Selecione uma imagem', 'carrossel_select');?>"
                     class="button-primary carrossel_media_manager"
                 />
@@ -140,13 +183,20 @@ add_action('widgets_init', 'idg_widget_carrossel_registration');
 
 
 
-function load_wp_media_files($page)
+function admin_load_wp_media_files($page)
 {
     wp_enqueue_media();
     wp_enqueue_script( 'carrossel_script', get_template_directory_uri() . '/lib/admin-carrossel.js' , array('jquery'), '0.1' );
 }
-add_action('admin_enqueue_scripts', 'load_wp_media_files');
+add_action('admin_enqueue_scripts', 'admin_load_wp_media_files');
 
+function load_wp_media_files($page){    
+    wp_enqueue_script( 'carrossel_script', get_template_directory_uri() . '/padraogoverno/resources/js/carousel.js' , array('jquery'), '0.1' );
+    wp_register_style( 'carousel_css',    get_template_directory_uri() . '/padraogoverno/resources/css/carousel.css' , false,   0 );
+    wp_enqueue_style ( 'carousel_css' );
+ 
+}
+add_action('wp_enqueue_scripts', 'load_wp_media_files');
 
 function carrossel_get_image()
 {
